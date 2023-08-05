@@ -1,0 +1,86 @@
+[16-Nov-2016 09:45:04 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 69
+[16-Nov-2016 09:45:10 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 69
+[16-Nov-2016 09:45:42 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 69
+[16-Nov-2016 09:46:51 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 69
+[16-Nov-2016 09:52:09 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 74
+[16-Nov-2016 09:53:16 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 74
+[16-Nov-2016 09:53:34 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 74
+[16-Nov-2016 09:53:58 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 74
+[16-Nov-2016 11:04:41 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 228
+[16-Nov-2016 11:16:53 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[16-Nov-2016 11:18:33 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[16-Nov-2016 11:36:07 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[16-Nov-2016 17:57:38 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[17-Nov-2016 16:14:42 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Nov-2016 16:14:42 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Nov-2016 16:14:47 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Nov-2016 16:14:47 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Nov-2016 16:14:47 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[18-Nov-2016 08:37:22 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 08:37:22 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 08:37:24 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 08:37:24 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 08:37:24 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[18-Nov-2016 16:43:21 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:43:21 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:44:06 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:44:06 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:44:06 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[18-Nov-2016 16:49:37 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:49:37 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:52:07 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:52:07 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Nov-2016 16:52:07 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[22-Nov-2016 14:43:57 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[22-Nov-2016 14:43:57 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[22-Nov-2016 14:44:32 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[22-Nov-2016 14:44:32 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[22-Nov-2016 14:44:33 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[24-Nov-2016 19:30:06 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'bimdcl'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[24-Nov-2016 19:30:07 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[24-Nov-2016 19:30:49 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'bimdcl'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[24-Nov-2016 19:30:49 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[24-Nov-2016 19:30:49 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[25-Nov-2016 15:27:37 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:27:37 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:27:39 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:27:39 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:31:13 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:31:13 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:31:15 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:31:15 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[25-Nov-2016 15:31:16 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[06-Dec-2016 12:29:07 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[06-Dec-2016 12:29:07 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[16-Dec-2016 20:17:33 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[16-Dec-2016 20:17:33 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[16-Dec-2016 20:19:42 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[16-Dec-2016 20:19:42 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[16-Dec-2016 20:19:56 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[16-Dec-2016 20:19:56 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[16-Dec-2016 20:19:56 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[17-Dec-2016 11:19:05 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:19:05 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:19:17 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:19:17 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:19:18 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[17-Dec-2016 11:30:41 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:30:41 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:31:14 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:31:14 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:55:53 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[17-Dec-2016 11:55:53 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Dec-2016 15:06:31 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[18-Dec-2016 15:06:31 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[28-Dec-2016 05:48:41 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[28-Dec-2016 05:48:41 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[28-Dec-2016 05:50:06 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[28-Dec-2016 05:50:06 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[28-Dec-2016 05:50:09 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235
+[26-Jan-2017 13:18:56 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'root'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[26-Jan-2017 13:18:56 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[07-Feb-2017 05:56:57 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'bimdcl'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[07-Feb-2017 05:56:57 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[07-Feb-2017 06:01:47 America/Chicago] PHP Warning:  mysql_set_charset(): Access denied for user 'bimdcl'@'localhost' (using password: NO) in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[07-Feb-2017 06:01:47 America/Chicago] PHP Warning:  mysql_set_charset(): A link to the server could not be established in /home/bimdcl/public_html/hospital/conexion.php on line 7
+[07-Feb-2017 06:01:47 America/Chicago] PHP Notice:  Undefined variable: rn in /home/bimdcl/public_html/hospital/mod_inventario/calendar/odt/odt_pdf2.php on line 235

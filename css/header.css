@@ -1,0 +1,83 @@
+body {
+  font-family: 'open sans', Helvetica, Arial, Sans-Serif, Tahoma;
+  background: #B3F0EC;
+  margin: 0;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 300;
+}
+
+a{
+	background: transparent;
+    text-decoration: none;
+	color: #fff;
+	-webkit-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+}
+a:hover{
+	color: #CAFFFA;
+}
+
+.bim {
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+.cabecera .container {
+	width: 1170px;
+	margin: 0 auto;
+	padding: 0 0px;
+}
+
+.cabecera .logo{
+	float:left;
+	width: 230px;
+	padding:10px 0;
+}
+
+.cabecera .menu{
+	float: right;
+}
+.cabecera .menu ul{
+	list-style: none;
+	position: relative;
+	margin:0;
+	padding:0;
+}
+.cabecera .menu ul li{
+	float: left;
+}
+.cabecera .menu ul li a{
+	font-family: 'open sans', Arial, Helvetica;
+	font-weight: 500;
+	padding:0 15px;
+	display:block;
+	line-height: 20px;
+	position: fixed;
+		top: 128px;
+		right: 15px;
+}
+
+.headline {
+	border: 2px solid #1E9FC4;
+	background: #1E9FC4;
+	height: 25px;
+	width: 100%;
+	position: fixed;
+		top: 124px;
+}
+
+.mmenu { 
+	border: 2px solid #00A99D;
+	background: #00A99D;
+	height: 120px;
+	width: 245px;
+	position: absolute;
+		top: 0;
+		left: 0;
+}
+
+.logo {
+	margin: 1px 0 0 63px;
+} 

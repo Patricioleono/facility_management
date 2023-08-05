@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>Titulo</title>
+		<style>
+			<style>
+			body {
+				font-family: Monospace;
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				color: #fff;
+				position: absolute;
+				width: 100%;
+				display: block;
+			}
+			#stats {
+				position: absolute;
+				right: 10px;
+				top: 5px;
+				color: #fff;
+				text-align: left;
+				background: rgba(0, 0, 0, 0.5);
+				padding: 10px;
+				width: 200px;
+				height: 60px;
+				border: solid 1px black;
+				border-radius: 5px;
+			}
+
+
+			span.link {
+				color: skyblue;
+				cursor: pointer;
+				text-decoration : underline;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="info">
+			<span class="link" id="temple">Templo</span>,
+			<span class="link" id="castello">Castello</span>,
+			<span class="link" id="duomo">Duomo</span>,
+			<span class="link" id="trans">Transparencia</span>,
+		</div>
+		<div id="stats"></div>
+		<script src="three.js"></script>
+        <script src="TrackBallControls.js"></script>
+		<script src="Projector.js"></script>
+        <script src="STLLoader.js"></script>
+		<script>
+			var container, stats;
+                        var camera, scene, renderer;
+                        var mouse, controls;
+                        var info,INTERSECTED;
+                        var raycast;
+                        var objects = [];
+                        var i = 1;
+                        var plane = new THREE.Plane();
+						var statsNode = document.getElementById('stats');
+						var material = new THREE.MeshLambertMaterial( { color : 0xCCCCCC,transparent: true, opacity: 1  } );
+						function addGeometry( type ) {
+
+							for( var i = 0; i < scene.children.length; i++ ) {
+
+								var current = scene.children[ i ];
+
+								if( current instanceof THREE.Mesh ) {
+
+								current.geometry.dispose();
+								scene.remove( current );
+								i--;
+
+								}
+
+							}
+							objects = [];
+							if(type == 1){
+								var loader = new THREE.STLLoader();
+								loader.load( 'test/modelo.stl', function ( geometry ) {
+								material.opacity=1;
+								geometry.center();
+								var mesh = new THREE.Mesh( geometry, material );
+
+								mesh.position.set( 0, 0, 0);
+								mesh.scale.set( 0.02, 0.02, 0.02 );
+
+								mesh.castShadow = true;
+								mesh.receiveShadow = true;
+								//objects.push(mesh);
+								scene.add( mesh );
+
+								} );
+								var geometria = new THREE.BoxGeometry(1, 1, 1);
+								var object = new THREE.Mesh(geometria, new THREE.MeshLambertMaterial());
+								object.name = 'Hola';
+								object.scale.set(10,10,10);
+								objects.push(object);
+								scene.add(object);
+							}
+							if(type == 2){
+								var loader = new THREE.STLLoader();
+								loader.load( 'test/castello.stl', function ( geometry ) {
+								geometry.computeVertexNormals();
+								geometry.center();
+								material.opacity=1;
+								var mesh = new THREE.Mesh( geometry, material );
+								
+								//mesh.position.set( 0, 1, 0.6 );
+								mesh.scale.set( 0.1, 0.1, 0.1 );
+
+								mesh.matrixAutoUpdate = false;
+								mesh.updateMatrix();
+								//objects.push(mesh);
+								scene.add( mesh );
+
+								} );
+								var geometria = new THREE.BoxGeometry(1, 1, 1);
+								var object = new THREE.Mesh(geometria, new THREE.MeshLambertMaterial());
+								object.name = 'Hola';
+								object.scale.set(1,1,1);
+								object.position.set(0,-5,0);
+								objects.push(object);
+								scene.add(object);
+							}
+							if(type == 3){
+								var loader = new THREE.STLLoader();
+								loader.load('test/duomo.stl' , function ( object ) {                
+									object.computeBoundingBox();
+									object.computeVertexNormals();
+									object.center();
+									///////////////////////////////////////////////////////////////
+									material.opacity=1;
+									var attrib = object.getAttribute('position');
+									if(attrib === undefined) {
+										throw new Error('a given BufferGeometry object must have a position attribute.');
+									}
+									var positions = attrib.array;
+									var vertices = [];
+									for(var i = 0, n = positions.length; i < n; i += 3) {
+										var x = positions[i];
+										var y = positions[i + 1];
+										var z = positions[i + 2];
+										vertices.push(new THREE.Vector3(x, y, z));
+									}
+									var faces = [];
+									for(var i = 0, n = vertices.length; i < n; i += 3) {
+										faces.push(new THREE.Face3(i, i + 1, i + 2));
+									}
+
+									var geometry = new THREE.Geometry();
+									geometry.vertices = vertices;
+									geometry.faces = faces;
+									geometry.computeFaceNormals();              
+									geometry.mergeVertices()
+									geometry.computeVertexNormals();
+									///////////////////////////////////////////////////////////////
+									var mesh = new THREE.Mesh(geometry, material);
+									//objects.push(mesh);
+									scene.add( mesh );
+								});
+								var geometria = new THREE.BoxGeometry(1, 1, 1);
+								var object = new THREE.Mesh(geometria, new THREE.MeshLambertMaterial());
+								object.name = 'Hola';
+								object.scale.set(10,10,10);
+								objects.push(object);
+								scene.add(object);
+							}
+							
+						}
+                        init ();
+                        animate();
+                        function init (){
+                            
+                            container = document.createElement('div');
+							document.body.appendChild(container);
+                            /*Crear camera y darle una posicion inicial*/
+                            camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1 , 10000);
+                            camera.position.set(0,3,5);
+                            
+                            /*Crear escena*/
+                            scene = new THREE.Scene();
+							
+							scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
+
+							addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
+							addShadowedLight( 0.5, 1, -1, 0xffaa00, 1 );
+                            
+                            /*Configurar controles de la camara*/
+                            controls = new THREE.TrackballControls( camera );
+                            controls.addEventListener('change', render);
+                            
+                            /*Crear una geometria*/
+							//addGeometry(1);
+                            document.getElementById( 'temple' ).addEventListener( 'click', function() { addGeometry( 1 ); } );
+							document.getElementById( 'castello' ).addEventListener( 'click', function() { addGeometry( 2 ); } );
+							document.getElementById( 'duomo' ).addEventListener( 'click', function() { addGeometry( 3 ); } );
+                            document.getElementById( 'trans' ).addEventListener( 'click', function() { if(material.opacity == 1){material.opacity = 0.25;}else{material.opacity=1;}} );
+                            
+                            /*Configurar raycaster y vector de mouse*/
+                            raycast = new THREE.Raycaster();
+                            mouse = new THREE.Vector2();
+                            
+                            renderer = new THREE.WebGLRenderer();
+                            renderer.setClearColor(0xf0f0f0);
+                            renderer.setPixelRatio(window.devicePixelRatio);
+                            renderer.setSize(window.innerWidth, window.innerHeight);
+                            document.body.appendChild(renderer.domElement);
+                         
+                            window.addEventListener('resize', onWindowResize, false);
+                            document.addEventListener('mousedown', onDocumentMouseDown, false);
+							document.addEventListener('touchstart', onDocumentMouseStart, false);
+                            document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+                        }
+						
+						function addShadowedLight( x, y, z, color, intensity ) {
+
+							var directionalLight = new THREE.DirectionalLight( color, intensity );
+							directionalLight.position.set( x, y, z );
+							scene.add( directionalLight );
+
+							directionalLight.castShadow = true;
+
+							var d = 1;
+							directionalLight.shadow.camera.left = -d;
+							directionalLight.shadow.camera.right = d;
+							directionalLight.shadow.camera.top = d;
+							directionalLight.shadow.camera.bottom = -d;
+
+							directionalLight.shadow.camera.near = 1;
+							directionalLight.shadow.camera.far = 4;
+
+							directionalLight.shadow.mapSize.width = 1024;
+							directionalLight.shadow.mapSize.height = 1024;
+
+							directionalLight.shadow.bias = -0.005;
+
+						}
+                        function onWindowResize(){
+                            camera.aspect = window.innerWidth / window.innerHeight;
+                            camera.updateProjectionMatrix();
+                            renderer.setSize(window.innerWidth, window.innerHeight);
+                        } 
+                        
+                        
+                        function onDocumentMouseMove( event ) {
+
+							event.preventDefault();
+
+							mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+							mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+							raycast.setFromCamera( mouse, camera );
+
+				var intersects = raycast.intersectObjects( objects);
+
+				if ( intersects.length > 0 ) {
+
+					if ( INTERSECTED != intersects[ 0 ].object ) {
+
+						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+						INTERSECTED = intersects[ 0 ].object;
+						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+						INTERSECTED.material.emissive.setHex( 0xff0000 );
+
+					}
+
+				} else {
+
+					if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+					INTERSECTED = null;
+
+				}
+							
+
+						}
+						function onDocumentMouseStart(event){
+                            event.preventDefault();
+                            event.clientX = event.touches[0].clientX;
+                            event.clientY = event.touches[0].clientY;
+                            onDocumentMouseDown(event);
+                        }
+                        
+                        function onDocumentMouseDown(event){
+                            event.preventDefault();
+                            mouse.x = (event.clientX / renderer.domElement.clientWidth) *2 -1;
+                            mouse.y = -(event.clientY / renderer.domElement.clientHeight) *2 +1;
+                            raycast.setFromCamera(mouse, camera);
+                            var intercepcion = raycast.intersectObjects ( objects );
+                            if(intercepcion.length > 0){
+                                
+                                //intercepcion[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+                                var target = intercepcion[0].object;
+                                statsNode.innerHTML ='HI '+ target.name+i;
+                                i = i +1;
+                            }
+                        }
+                        
+                        function animate(){
+                            requestAnimationFrame(animate);
+                            render();
+                            controls.update();
+                        }
+                        
+                        function render(){
+						
+
+                            renderer.render(scene, camera);
+                        }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>cubes</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #f0f0f0;
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="fs.js"></script>
+		<script src="three.js"></script>
+                <script src="TrackBallControls.js"></script>
+		<script src="Projector.js"></script>
+		<script src="CanvasRenderer.js"></script>
+		<script src="encoding-indexes.js"></script>
+		<script src="encoding.js"></script>
+		<script src="DataStream.js"></script>
+		<script src="stl-ascii-reader.js"></script>
+		<script src="stl-binary-reader.js"></script>
+		<script src="stl-reader.js"></script>
+		<script src="stats.min.js"></script>
+
+		<script>
+			var container, stats;
+			var camera, scene, renderer;
+			var particleMaterial,particle;
+			var raycaster;
+			var mouse;
+			var objects = [];
+                        var info;
+			
+			init();
+			animate();
+			function init() {
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+                                info = document.createElement( 'div' );
+				info.style.position = 'absolute';
+				info.style.top = '10px';
+				info.style.width = '100%';
+				info.style.textAlign = 'center';
+				info.innerHTML = 'Clickee un cubo';
+				container.appendChild( info );
+				
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.set( 0, 0, 5 );
+				scene = new THREE.Scene();
+                                controls = new THREE.TrackballControls( camera );
+                                controls.addEventListener('change', render);
+				
+				/*var xhr = new XMLHttpRequest();
+                                xhr.open('GET', 'test/cube.stl', true);
+                                xhr.responseType = 'arraybuffer';
+                                var loader = new StlReader();
+                                xhr.onload = function(e){
+                                    var buffer = xhr.response;
+                                    loader.read(buffer);
+                                };
+                                
+                                
+				var material = new THREE.MeshPhongMaterial( {
+                      ambient: 0xff5533, 
+                      color: 0xff5533, 
+                      specular: 0x111111,
+                      shininess: 200 } 
+                                                              
+                   );
+				var geo = new THREE.BufferGeometry();
+				geo.addAttribute('position', new THREE.BufferAttribute(loader.vertices, 3));
+				geo.addAttribute('normal', new THREE.BufferAttribute(loader.normals, 3));
+				mesh = new THREE.Mesh(geo, material);*/
+				var txloader = new THREE.TextureLoader();
+					var material = new THREE.MeshBasicMaterial({map: txloader.load('brick_diffuse.jpg')});
+
+				
+				
+				var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+				for ( var i = 0; i < 5; i ++ ) {
+					var objec = new THREE.Mesh( geometry, material );
+                                        objec.name = 'Cubo N' + (i+1);
+					objec.position.x = Math.random() * 8 - 4;
+					objec.position.y = Math.random() * 8 - 4;
+					objec.position.z = Math.random() * 8 - 4;
+					objec.scale.x = Math.random() * 2 + 1;
+					objec.scale.y = Math.random() * 2 + 1;
+					objec.scale.z = Math.random() * 2 + 1;
+					objec.rotation.x = Math.random() * 2 * Math.PI;
+					objec.rotation.y = Math.random() * 2 * Math.PI;
+					objec.rotation.z = Math.random() * 2 * Math.PI;
+					scene.add( objec );
+					objects.push( objec );
+				}
+				
+				var PI2 = Math.PI * 2;
+				particleMaterial = new THREE.SpriteCanvasMaterial( {
+					color: 0x000000,
+					program: function ( context ) {
+						context.beginPath();
+						context.arc( 0, 0, 0.5, 0, PI2, true );
+						context.fill();
+					}
+				} );
+                                particle = new THREE.Mesh(new THREE.SphereGeometry(0.1), new THREE.MeshLambertMaterial({ color: 0xff0000 }));
+                               
+				scene.add( particle );
+                                //scene.add(mesh);
+				raycaster = new THREE.Raycaster();
+				mouse = new THREE.Vector2();
+				renderer = new THREE.CanvasRenderer();
+				renderer.setClearColor( 0xf0f0f0 );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+                                
+				stats = new Stats();
+                                
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+			function onDocumentTouchStart( event ) {
+				event.preventDefault();
+				event.clientX = event.touches[0].clientX;
+				event.clientY = event.touches[0].clientY;
+				onDocumentMouseDown( event );
+			}
+			function onDocumentMouseDown( event ) {
+				event.preventDefault();
+				mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+				mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+				raycaster.setFromCamera( mouse, camera );
+				var intersects = raycaster.intersectObjects( objects );
+				if ( intersects.length > 0 ) {
+					intersects[ 0 ].object.material.color.setHex( Math.random() * 0xffffff );
+                                        var target = intersects[0].object;
+					
+					particle.position.x = intersects[0].point.x;
+                                        particle.position.y = intersects[0].point.y;
+                                        particle.position.z = intersects[0].point.z;
+					
+                                        info.innerHTML = 'Ha clickeado el '+target.name+' link de prueba <a href="http://www.youtube.com" target="_blank">youtube</a>';
+				}
+                                else{
+                                    //info.innerHTML = '';
+                                }
+				
+			}
+			
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+                                controls.update();
+				stats.update();
+			}
+			function render() {
+				
+				renderer.render( scene, camera );
+			}
+		</script>
+
+	</body>
+</html>
