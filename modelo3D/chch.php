@@ -1289,9 +1289,10 @@ $tipousuario=$row123['tipousuario'];
                                         vecCamera.x = vecCamera.x / moduloVecCamera;
                                         vecCamera.y = vecCamera.y / moduloVecCamera;
                                         new TWEEN.Tween(camera.position).to({
-                                            x: axisx+vecCamera.x * 1000,
-                                            y: axisy+vecCamera.y * 100, z: axisz + 1000},
-                                                1500).easing(TWEEN.Easing.Linear.None).start();
+                                            x: axisx+vecCamera.x * 1600,
+                                            y: axisy+vecCamera.y * 1000,
+                                            z: axisz + 1600},
+                                                1000).easing(TWEEN.Easing.Linear.None).start();
 
                                         new TWEEN.Tween(controls.target).to({
                                             x: axisx,
