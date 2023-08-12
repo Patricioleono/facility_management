@@ -250,7 +250,10 @@ $tipousuario=$row123['tipousuario'];
         </div>
         <div id='stats2'>
             <div style="padding:10px;background-color:#000000;height:22px;width:135px;border:5px solid black;">
-                Estado <?php echo $row['total'].' equipos'?> 
+                Total de Equipos <?php echo $row['total']?>
+            </div>
+            <div style="padding:10px;background-color:#000000;height:30px;width:135px;border:5px solid black;">
+                Nivel de Servicio <?php echo number_format($row1['bueno'], '0',',','.').'%'?>
             </div>
             <div style="padding:10px;background-color:#00CC66;height:22px;width:135px;border:5px solid black;">
                <?php echo 'BUENO '. $row1['bueno'].'%';?>
