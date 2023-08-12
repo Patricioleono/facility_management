@@ -132,7 +132,6 @@
   </tr>
   
    <tr >    
-    <td colspan="4" width="50%"><button class="button2" onclick="document.execCommand('copy');">Generar Enlace</button></td>
   <form method="POST" action="historialequipo.php">
     <input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
     <td colspan="4" width="50%"><button type="button" class="button2" value="Enviar" title="Documentos" onclick="form.submit()">Historial de Equipo</button></td>
