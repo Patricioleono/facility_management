@@ -36,7 +36,7 @@ $tipousuario=$row123['tipousuario'];
                 color: #fff;
                 position: fixed;
                 bottom: 1%;
-                left: 1%;
+                left: 43%;
                 right: 0;
                 width: 100%;
                 display: block;
@@ -64,7 +64,7 @@ $tipousuario=$row123['tipousuario'];
             #stats2 {
                 position: absolute;
                 left: 1%;
-                top: 65%;
+                top: 57%;
                 bottom: 12%;
                 color: #fff;
                 text-align: left;
@@ -83,9 +83,9 @@ $tipousuario=$row123['tipousuario'];
             }
             #stats3 {
                 position: absolute;
-                left: 65%;
+                left: 85%;
                 top: 95%;
-                bottom: 0;
+                bottom: 2%;
                 color: #fff;
                 text-align: center;
                 background: rgba(0, 0, 0, 0.5);
@@ -252,7 +252,7 @@ $tipousuario=$row123['tipousuario'];
             <div style="padding:10px;background-color:#000000;height:22px;width:135px;border:5px solid black;">
                 Total de Equipos <?php echo $row['total']?>
             </div>
-            <div style="padding:10px;background-color:#000000;height:30px;width:135px;border:5px solid black;">
+            <div style="padding:10px;background-color:#000000;height:22px;width:135px;border:5px solid black;">
                 Nivel de Servicio <?php echo number_format($row1['bueno'], '0',',','.').'%'?>
             </div>
             <div style="padding:10px;background-color:#00CC66;height:22px;width:135px;border:5px solid black;">
