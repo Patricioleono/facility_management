@@ -244,7 +244,9 @@ $tipousuario=$row123['tipousuario'];
 
         <div id='stats1'>
             <div id='stats'></div>
-            <input type=button value="Notificar Fallo" name="Enviar" id="botoninput" onclick=estadoEquipo("FALLANDO")> 
+            <?php if($tipousuario == 1 || $tipousuario == 3){?>
+                <input type=button value="Notificar Fallo" name="Enviar" id="botoninput" onclick=estadoEquipo("FALLANDO")>
+            <?php }elseif ($tipousuario == 4 || $tipousuario == 2){ }?>
         </div>
         <div id='stats2'>
             <div style="padding:10px;background-color:#000000;height:22px;width:135px;border:5px solid black;">

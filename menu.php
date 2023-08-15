@@ -1,9 +1,9 @@
 <?php
-$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
-mysql_select_db("bimcl_calvo_mackenna", $enlace);
+//$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
+//mysql_select_db("bimcl_calvo_mackenna", $enlace);
 
-//$enlace = mysql_connect("localhost:3306","root","");
-//mysql_select_db("hospital", $enlace);
+$enlace = mysql_connect("localhost:3306","root","");
+mysql_select_db("hospital", $enlace);
 
 $result = mysql_query("
 SELECT X.cantidadEventos1, X.cantidadEventos2, X.cantidadEventos3, X.cantidadEventos4, X.cantidadEventos5,
@@ -98,10 +98,6 @@ document.oncontextmenu = function(){return false}
           <div class="link"><i class="icon-cog-alt"></i> Repuestos <i class="icon-down-open"></i></div>
           <ul class="submenu">
               <li><button type="button" class="accordion-content" onclick="window.open('mod_repuestos/mdr.php','centro');" title="mdr.php?tipo=<?php echo $tipousuario?>" value="Estructura" name="Estructura" > Repuestos Médicos </button></li>
-
-              <!--         <li><a href="#" target="centro">Repuestos de Infraestructura 1</a></li>
-                      <li><a href="#" target="centro">Repuestos de Infraestructura 2</a></li>
-                      <li><a href="#" target="centro">Repuestos de Infraestructura 3</a></li> -->
           </ul>
       </li>
            <li>
@@ -144,12 +140,33 @@ document.oncontextmenu = function(){return false}
           <div class="link"><button type="button" class="accordion-content" onclick="window.open('modelo3D/chch.php','_blank');" value="Modelo3D" name="Modelo3D" > Modelo 3D</button>
 
       </li>
-   <?php } elseif($rol != 1){?>
+   <?php } elseif($rol == 3){?>
       <li>
           <div class="link"><button type="button" class="accordion-content" onclick="window.open('modelo3D/chch.php','_blank');" value="Modelo3D" name="Modelo3D" > Modelo 3D</button>
 
       </li>
-   <?php }?>
+      <li>
+           <div class="link"><i class="icon-folder-open"></i> Servicios generales <i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('correo_servicios.php','centro');" value="Gastos" name="Gastos" > Mandar correo por Falla </button></li>
+           </ul>
+      </li>
+  <?php } elseif($rol == 4){?>
+  <li>
+      <div class="link"><button type="button" class="accordion-content" onclick="window.open('modelo3D/chch.php','_blank');" value="Modelo3D" name="Modelo3D" > Modelo 3D</button>
+  </li>
+    <li>
+       <div class="link"><i class="icon-chart-line"></i> Balance <i class="icon-down-open"></i></div>
+       <ul class="submenu">
+           <li><button type="button" class="accordion-content" onclick="window.open('year.php','centro');" value="Gastos" name="Gastos" > Historial de Gastos </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('presupuesto.php','centro');" value="Gastos" name="Gastos" > Presupuesto anual</button></li>
+       </ul>
+</li>
+  <?php }elseif ($rol == 2){ ?>
+      <li>
+          <div class="link"><button type="button" class="accordion-content" onclick="window.open('modelo3D/chch.php','_blank');" value="Modelo3D" name="Modelo3D" > Modelo 3D</button>
+      </li>
+   <?php echo "<script>window.open('modelo3D/chch.php')</script>";}?>
   </ul>
 
   <script src="js/jquery.min.js"></script>
