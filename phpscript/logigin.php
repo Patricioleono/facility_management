@@ -1,6 +1,6 @@
 <?php
-session_start(); 
-include_once "../conexion1.php";
+session_start();
+require_once "../conexion1.php";
 
 if(!isset($_SESSION['userid']))
 {
