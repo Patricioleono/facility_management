@@ -147,23 +147,26 @@ $i = $i + 1;
     $query1="SELECT * FROM instalaciones WHERE idunica='$nombre_fichero'";
     $resultado1=$mysqli->query($query1);
     $row1=$resultado1->fetch_assoc();
-    $array[$i][0]=utf8_encode($row1['equipo']);
-    $array[$i][1]=utf8_encode($row1['estadoequipo']);
-    $array[$i][2]=utf8_encode($row1['piso']);
-    $array[$i][3]=utf8_encode($row1['recinto']);
-    $array[$i][4]=utf8_encode($row1['nombreinstalacion']);
-    $array[$i][5]=utf8_encode($row1['nombrefabricante']);
-    $array[$i][6]=utf8_encode($row1['modelo']);
-    $array[$i][7]=utf8_encode($row1['nombreproveedor']);
-    $array[$i][8]=$nombre_fichero;
-    $array[$i][9]=utf8_encode($row1['fechainstalacion']);
-    $array[$i][10]=utf8_encode($row1['fechacaducidadgarantia']);
-    $array[$i][11]=utf8_encode($row1['acreditacion']);
-    $array[$i][12]=utf8_encode($row1['imagen']);
-    $array[$i][13]=utf8_encode($row1['x']);
-    $array[$i][14]=utf8_encode($row1['y']);
-    $array[$i][15]=utf8_encode($row1['z']);
-    $i = $i + 1;
+    if(substr($row1['nombreinstalacion'], 0, 2) == $prueba){
+        $array[$i][0]=utf8_encode($row1['equipo']);
+        $array[$i][1]=utf8_encode($row1['estadoequipo']);
+        $array[$i][2]=utf8_encode($row1['piso']);
+        $array[$i][3]=utf8_encode($row1['recinto']);
+        $array[$i][4]=utf8_encode($row1['nombreinstalacion']);
+        $array[$i][5]=utf8_encode($row1['nombrefabricante']);
+        $array[$i][6]=utf8_encode($row1['modelo']);
+        $array[$i][7]=utf8_encode($row1['nombreproveedor']);
+        $array[$i][8]=$nombre_fichero;
+        $array[$i][9]=utf8_encode($row1['fechainstalacion']);
+        $array[$i][10]=utf8_encode($row1['fechacaducidadgarantia']);
+        $array[$i][11]=utf8_encode($row1['acreditacion']);
+        $array[$i][12]=utf8_encode($row1['imagen']);
+        $array[$i][13]=utf8_encode($row1['x']);
+        $array[$i][14]=utf8_encode($row1['y']);
+        $array[$i][15]=utf8_encode($row1['z']);
+        $i = $i + 1;
+
+    }
 
 }
 }
