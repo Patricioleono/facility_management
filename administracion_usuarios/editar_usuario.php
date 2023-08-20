@@ -2,11 +2,18 @@
 require_once "../conexion2.php";
 $id = $_POST['id'];
 
-$sql = "SELECT * FROM usuarios WHERE idusuario = $id ";
+$sql = "SELECT *
+        , (SELECT rol_rol FROM roles WHERE rol_id = X.tipousuario) AS ROL
+        , (SELECT rol_id FROM roles WHERE rol_id = X.tipousuario) AS ID_ROL
+        FROM 
+            ( SELECT *
+              FROM usuarios 
+              WHERE idusuario = $id
+            ) X";
+
 $result = $con->query($sql);
 
 $data = $result->fetch_assoc();
-
 ?>
 
 
@@ -42,13 +49,7 @@ $data = $result->fetch_assoc();
                     <td colspan="1"><b><label for="rol">Seleccionar Rol:</label></b></td>
                     <td colspan="1">
                         <select name="rolusu" id="rol">
-                            <?php if ($data['tipousuario'] == 1){ ?>
-                                <option value="1">Jefe Mantenimiento</option>
-                            <?php }elseif($data['tipousuario'] == 1 && substr(strtolower($data['cargo']),0, 1) == 'j'){ ?>
-                                <option value="2">Jefe de Piso</option>
-                            <?php }else{ ?>
-                                <option value="2">Personal General</option>
-                            <?php }?>
+                                <option value="<?= $data['ID_ROL']; ?>"><?= $data['ROL']; ?></option>
                         </select></td>
                 </tr>
                 <tr>

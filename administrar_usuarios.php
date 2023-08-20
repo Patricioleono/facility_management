@@ -1,7 +1,11 @@
 <?php
     require_once "conexion2.php";
+    $sql2 = "SELECT rol_id as rolval, rol_rol as rolname FROM roles";
     $sql = "SELECT nombre, personal, telefono, correo, idusuario FROM usuarios ORDER BY idusuario DESC";
     $result = $con->query($sql);
+    $rolresult = $con->query($sql2);
+    $roles = $rolresult->fetch_all();
+
 ?>
 
 <html>
@@ -36,10 +40,9 @@
                     <td colspan="1"><b><label for="rol">Seleccionar Rol:</label></b></td>
                     <td colspan="1">
                         <select name="rolusu" id="rol">
-                            <option value="0">Seleccione Una Opcion</option>
-                            <option value="1">Jefe Mantenimiento</option>
-                            <option value="2">Jefe de Piso</option>
-                            <option value="2">Personal General</option>
+                            <?php for ($i = 0; $i < count($roles); $i++){
+                                echo "<option value='".$roles[$i][0]."'>".$roles[$i][1]."</option>";
+                            }?>
                         </select></td>
                 </tr>
                 <tr>
