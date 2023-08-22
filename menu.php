@@ -100,14 +100,14 @@ document.oncontextmenu = function(){return false}
               <li><button type="button" class="accordion-content" onclick="window.open('mod_repuestos/mdr.php','centro');" title="mdr.php?tipo=<?php echo $tipousuario?>" value="Estructura" name="Estructura" > Repuestos Médicos </button></li>
           </ul>
       </li>
+           <li>
+              <div class="link"><i class="icon-folder-open"></i> Administración <i class="icon-down-open"></i></div>
+              <ul class="submenu">
 
-          <div class="link"><i class="icon-folder-open"></i> Administración <i class="icon-down-open"></i></div>
-          <ul class="submenu">
-
-              <li><button type="button" class="accordion-content" onclick="window.open('edificio/piso.php','centro');" value="Pisos y Sectores" name="Pisos y Sectores" > Pisos y Sectores </button></li>
-              <li><button type="button" class="accordion-content" onclick="window.open('administrar_usuarios.php','centro');" value="Administrar Usuarios" name="Administrar Usuarios" > Administrar Usuarios </button></li>
-          </ul>
-
+                  <li><button type="button" class="accordion-content" onclick="window.open('edificio/piso.php','centro');" value="Pisos y Sectores" name="Pisos y Sectores" > Pisos y Sectores </button></li>
+                  <li><button type="button" class="accordion-content" onclick="window.open('administrar_usuarios.php','centro');" value="Administrar Usuarios" name="Administrar Usuarios" > Administrar Usuarios </button></li>
+              </ul>
+           </li>
       </li>
       <li>
           <div class="link"><i class="icon-folder-open"></i> Servicios generales <i class="icon-down-open"></i></div>
