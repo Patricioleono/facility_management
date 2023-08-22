@@ -100,7 +100,7 @@ document.oncontextmenu = function(){return false}
               <li><button type="button" class="accordion-content" onclick="window.open('mod_repuestos/mdr.php','centro');" title="mdr.php?tipo=<?php echo $tipousuario?>" value="Estructura" name="Estructura" > Repuestos Médicos </button></li>
           </ul>
       </li>
-           <li>
+
           <div class="link"><i class="icon-folder-open"></i> Administración <i class="icon-down-open"></i></div>
           <ul class="submenu">
 
@@ -170,7 +170,6 @@ document.oncontextmenu = function(){return false}
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Estructural (<?= $row['cantidadEventos3']; ?>) </button></li>
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos4'];?>) </button></li>
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones (<?= $row['cantidadEventos5'];  ?>) </button></li>
-
        </ul>
    </li>
 
