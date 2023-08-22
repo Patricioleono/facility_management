@@ -155,13 +155,25 @@ document.oncontextmenu = function(){return false}
   <li>
       <div class="link"><button type="button" class="accordion-content" onclick="window.open('modelo3D/chch.php','_blank');" value="Modelo3D" name="Modelo3D" > Modelo 3D</button>
   </li>
-    <li>
+   <li>
        <div class="link"><i class="icon-chart-line"></i> Balance <i class="icon-down-open"></i></div>
        <ul class="submenu">
            <li><button type="button" class="accordion-content" onclick="window.open('year.php','centro');" value="Gastos" name="Gastos" > Historial de Gastos </button></li>
            <li><button type="button" class="accordion-content" onclick="window.open('presupuesto.php','centro');" value="Gastos" name="Gastos" > Presupuesto anual</button></li>
        </ul>
-</li>
+   </li>
+   <li>
+       <div class="link"><i class="icon-bell-1"></i> Notificaciones (<?= $row['notificacionesTotales']; ?>)<i class="icon-down-open"></i></div>
+       <ul class="submenu">
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Equipos Médicos (<?= $row['cantidadEventos1']; ?>) </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_sb.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Servicios Básicos (<?= $row['cantidadEventos2']; ?>) </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Estructural (<?= $row['cantidadEventos3']; ?>) </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos4'];?>) </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones (<?= $row['cantidadEventos5'];  ?>) </button></li>
+
+       </ul>
+   </li>
+
   <?php }elseif ($rol == 2){ ?>
       <li>
           <div class="link"><button type="button" class="accordion-content" onclick="window.open('modelo3D/chch.php','_blank');" value="Modelo3D" name="Modelo3D" > Modelo 3D</button>
