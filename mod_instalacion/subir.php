@@ -11,25 +11,14 @@
 	<body>
 		<center>	
 			
-			<?php
-			if($resultado3>0)
-				{
-			?>
-				<h1>Archivo Subido</h1>
-			<?php
-		        }
-		    else
-		    	{
-		    ?>
-				<h1>Error al Subir Archivo</h1>
-			<?php
-		        }
-		    ?>
-			
-			<p></p>	
-			
-			
-			
+			<?php if($resultado3){ ?>
+                <h1>Archivo Subido</h1>
+
+			<?php }else{ ?>
+                <h1>Error al Subir Archivo/Verifique que existe Archivo</h1>
+
+			<?php } ?>
+
 		</center>
 	</body>
 	</html>	
