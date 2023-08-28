@@ -23,6 +23,7 @@
 	$resultado4=$mysqli->query($query321);
 	$row4=$resultado4->fetch_assoc();
 
+    /*
 	$totalpiso1="SELECT ((SELECT COUNT(ID) FROM equipos where piso='1') + (SELECT COUNT(ID) FROM instalaciones where piso='1')+ (SELECT COUNT(ID) FROM servbas where piso='1')) AS totalp1";
 	$buenopiso1="SELECT ROUND((((SELECT COUNT(ID) FROM equipos where estadoequipo='BUENO' and piso = '1') + (SELECT COUNT(ID) FROM instalaciones where estadoequipo='BUENO' and piso = '1')+ (SELECT COUNT(ID) FROM servbas where estadoequipo='BUENO' and piso = '1'))*100 /((SELECT COUNT(ID) FROM equipos where piso='1') + (SELECT COUNT(ID) FROM instalaciones where piso='1')+ (SELECT COUNT(ID) FROM servbas where piso='1'))),1) AS buenop1";
 	$fallopiso1="SELECT ROUND((((SELECT COUNT(ID) FROM equipos where estadoequipo='FALLANDO' and piso='1') + (SELECT COUNT(ID) FROM instalaciones where estadoequipo='FALLANDO' and piso='1')+ (SELECT COUNT(ID) FROM servbas where estadoequipo='FALLANDO' and piso='1'))*100 / ((SELECT COUNT(ID) FROM equipos where piso='1') + (SELECT COUNT(ID) FROM instalaciones where piso='1')+ (SELECT COUNT(ID) FROM servbas where piso='1'))),1) AS fallop1";
@@ -107,5 +108,5 @@
 
 	$resultado4p4=$mysqli->query($sinmantencionpiso4);
 	$row4p4=$resultado4p4->fetch_assoc();
-
+*/
 ?>
