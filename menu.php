@@ -1,9 +1,9 @@
 <?php
-//$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
-//mysql_select_db("bimcl_calvo_mackenna", $enlace);
+$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
+mysql_select_db("bimcl_calvo_mackenna", $enlace);
 
-$enlace = mysql_connect("localhost:3306","root","");
-mysql_select_db("hospital", $enlace);
+//$enlace = mysql_connect("localhost:3306","root","");
+//mysql_select_db("hospital", $enlace);
 
 $result = mysql_query("
 SELECT X.cantidadEventos1, X.cantidadEventos2, X.cantidadEventos3, X.cantidadEventos4, X.cantidadEventos5,
@@ -74,7 +74,7 @@ document.oncontextmenu = function(){return false}
   <ul id="accordion" class="accordion">
    <?php if($rol == 1){ ?>
       <li>
-          <div class="link"><i class="icon-stethoscope"></i> Gestión Médica <i class="icon-down-open"></i></div>
+          <div class="link"><i class="icon-stethoscope"></i> Equipos Médica <i class="icon-down-open"></i></div>
           <ul class="submenu">
 
               <li><button type="button" class="accordion-content" onclick="window.open('mod_inventario/mdi.php','centro');" value="Gestión de Equipos Médicos" name="Gestión de Equipos Médicos"> Gestión de Equipos Médicos </button></li>
@@ -89,7 +89,7 @@ document.oncontextmenu = function(){return false}
               <li><button type="button" class="accordion-content" onclick="window.open('mod_estructura/estructura.php','centro');" value="Estructura" name="Estructura" > Estructura </button></li>
               <li><button type="button" class="accordion-content" onclick="window.open('mod_e_arquitectonico/e_arquitectonicos.php','centro');" value="Elementos Arquitectónicos" name="Elementos Arquitectónicos" > Elementos Arquitectónicos </button></li>
               <li><button type="button" class="accordion-content" onclick="window.open('mod_servbas/mdsb.php?tipo=<?php echo $tipousuario ?>','centro');" value="Artefactos" name="Artefactos"> Artefactos </button></li>
-              <li><button type="button" class="accordion-content" onclick="window.open('mod_instalacion/mdins.php?tipo=<?php echo $tipousuario ?>','centro');" value="Instalaciones" name="Instalaciones" > Instalaciones </button></li>
+              <li><button type="button" class="accordion-content" onclick="window.open('mod_instalacion/mdins.php?tipo=<?php echo $tipousuario ?>','centro');" value="Instalaciones" name="Instalaciones" > Instalaciones y Equipos Industriales </button></li>
           </ul>
       </li>
 
@@ -132,7 +132,7 @@ document.oncontextmenu = function(){return false}
               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_sb.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Servicios Básicos (<?= $row['cantidadEventos2']; ?>) </button></li>
               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Estructural (<?= $row['cantidadEventos3']; ?>) </button></li>
               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos4'];?>) </button></li>
-              <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones (<?= $row['cantidadEventos5'];  ?>) </button></li>
+              <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones y Equipos Industriales(<?= $row['cantidadEventos5'];  ?>) </button></li>
 
           </ul>
       </li>
@@ -169,7 +169,7 @@ document.oncontextmenu = function(){return false}
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_sb.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Servicios Básicos (<?= $row['cantidadEventos2']; ?>) </button></li>
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Estructural (<?= $row['cantidadEventos3']; ?>) </button></li>
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos4'];?>) </button></li>
-           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones (<?= $row['cantidadEventos5'];  ?>) </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones y Equipos Industriales (<?= $row['cantidadEventos5'];  ?>) </button></li>
        </ul>
    </li>
 
