@@ -260,7 +260,7 @@ $tipousuario=$row123['tipousuario'];
                <?php echo 'BUENO '. $row1['bueno'].'%';?>
             </div>
             <div style="padding:10px;background-color:#FF0000;height:22px;width:135px;border:5px solid black;cursor: pointer;"
-                 onclick="filtro( '?')">
+                 onclick="filtro( 'SIN MANTENCION')">
                 <?php echo 'SIN MANTENCION '.$row4['mantencion2'].'%';?>
             </div>
             <div style="padding:10px;background-color:#FF9900;height:22px;width:135px;border:5px solid black;cursor: pointer;"
@@ -268,7 +268,7 @@ $tipousuario=$row123['tipousuario'];
                 <?php echo  'FALLANDO ' .$row2['fallo'].'%';?>
             </div>
             <div style="padding:10px;background-color:#9933CC;height:22px;width:135px;border:5px solid black;cursor: pointer;"
-                 onclick="filtro( '?')">
+                 onclick="filtro( 'EN MANTENCION')">
                 <?php echo 'EN MANTENCION '. $row3['mantencion'].'%';?>
             </div>
         </div>
@@ -374,8 +374,9 @@ $tipousuario=$row123['tipousuario'];
                     subid = data[8].substr(0, 2);
 
                     if(subid == 'CL') {
-                        loader.load(direccion, function (geometry) {
-                            if (data[1] == "BUENO") {
+                        if(flag == 'BUENO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
                                 stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0x009900,
                                     transparent: true,
@@ -383,15 +384,33 @@ $tipousuario=$row123['tipousuario'];
                                 });
                                 stlequipos4.opacity = 1;
 
-                            } else if (data[1] == "SIN MANTENCION") {
-                                stlequipos4 = new THREE.MeshLambertMaterial({
-                                    color: 0xFF0000,
-                                    transparent: true,
-                                    opacity: 1
-                                });
-                                stlequipos4.opacity = 1;
-
-                            } else if (data[1] == "FALLANDO") {
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'FALLANDO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
                                 stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0xFF9900,
                                     transparent: true,
@@ -399,7 +418,67 @@ $tipousuario=$row123['tipousuario'];
                                 });
                                 stlequipos4.opacity = 1;
 
-                            } else if (data[1] == "EN MANTENCION") {
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'SIN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0xFF0000,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'EN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
                                 stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0x9933CC,
                                     transparent: true,
@@ -407,326 +486,532 @@ $tipousuario=$row123['tipousuario'];
                                 });
                                 stlequipos4.opacity = 1;
 
-                            }
-                            var mesh = new THREE.Mesh(geometry, stlequipos4);
-                            mesh.frustumCulled = false;
-                            mesh.position.set(0, y, 0);
-                            mesh.scale.set(0.2, 0.2, 0.2);
-                            mesh.userData.equipo = data[0];
-                            mesh.userData.estadoequipo = data[1];
-                            mesh.userData.recinto = data[3];
-                            mesh.userData.piso = data[2];
-                            mesh.userData.nombreinstalacion = data[4];
-                            mesh.userData.nombrefabricante = data[5];
-                            mesh.userData.modelo = data[6];
-                            mesh.userData.nombreproveedor = data[7];
-                            mesh.userData.fechainstalacion = data[9];
-                            mesh.userData.fechacaducidadgarantia = data[10];
-                            mesh.userData.acreditacion = data[11];
-                            mesh.userData.imagen = data[12];
-                            mesh.userData.x = data[13];
-                            mesh.userData.y = data[14];
-                            mesh.userData.z = data[15];
-                            mesh.name = stl;
-                            objects.push(mesh);
-                            scene.add(mesh);
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else {
+                            loader.load(direccion, function (geometry) {
+                                if (data[1] == "BUENO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
 
-                        });
+                                }
+                                else if (data[1] == "SIN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF0000,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "FALLANDO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF9900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "EN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x9933CC,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+
+                            });
+                        }
                     }else if(subid == 'EM') {
-                        loader.load(direccion, function (geometry) {
-                            if (data[1] == "BUENO") {
-                                stlequipos3 = new THREE.MeshLambertMaterial({
+                        if(flag == 'BUENO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0x009900,
                                     transparent: true,
                                     opacity: 1
                                 });
-                                stlequipos3.opacity = 1;
+                                stlequipos4.opacity = 1;
 
-                            } else if (data[1] == "SIN MANTENCION") {
-                                stlequipos3 = new THREE.MeshLambertMaterial({
-                                    color: 0xFF0000,
-                                    transparent: true,
-                                    opacity: 1
-                                });
-                                stlequipos3.opacity = 1;
-
-                            } else if (data[1] == "FALLANDO") {
-                                stlequipos3 = new THREE.MeshLambertMaterial({
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'FALLANDO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0xFF9900,
                                     transparent: true,
                                     opacity: 1
                                 });
-                                stlequipos3.opacity = 1;
+                                stlequipos4.opacity = 1;
 
-                            } else if (data[1] == "EN MANTENCION") {
-                                stlequipos3 = new THREE.MeshLambertMaterial({
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'SIN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0xFF0000,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'EN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0x9933CC,
                                     transparent: true,
                                     opacity: 1
                                 });
-                                stlequipos3.opacity = 1;
+                                stlequipos4.opacity = 1;
 
-                            }
-                            var mesh = new THREE.Mesh(geometry, stlequipos3);
-                            mesh.frustumCulled = false;
-                            mesh.position.set(0, y, 0);
-                            mesh.scale.set(0.2, 0.2, 0.2);
-                            mesh.userData.nombreequipo = data[0];
-                            mesh.userData.estadoequipo = data[1];
-                            mesh.userData.recinto = data[3];
-                            mesh.userData.piso = data[2];
-                            mesh.userData.tipoequipo = data[4];
-                            mesh.userData.nombrefabricante = data[5];
-                            mesh.userData.numeromodelo = data[6];
-                            mesh.userData.nombreproveedor = data[7];
-                            mesh.userData.fechainstalacion = data[9];
-                            mesh.userData.fechacaducidadgarantia = data[10];
-                            mesh.userData.acreditacion = data[11];
-                            mesh.userData.imagen = data[12];
-                            mesh.userData.x = data[13];
-                            mesh.userData.y = data[14];
-                            mesh.userData.z = data[15];
-                            mesh.name = stl;
-                            objects.push(mesh);
-                            scene.add(mesh);
-                        });
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else {
+                            loader.load(direccion, function (geometry) {
+                                if (data[1] == "BUENO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "SIN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF0000,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "FALLANDO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF9900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "EN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x9933CC,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+
+                            });
+                        }
                     }else if(subid == 'AS'){
-                        loader.load(direccion, function (geometry) {
-                            if (data[1] == "BUENO") {
-                                stlequipos2 = new THREE.MeshLambertMaterial({
+                        if(flag == 'BUENO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0x009900,
                                     transparent: true,
                                     opacity: 1
                                 });
-                                stlequipos2.opacity = 1;
+                                stlequipos4.opacity = 1;
 
-                            } else if (data[1] == "SIN MANTENCION") {
-                                stlequipos2 = new THREE.MeshLambertMaterial({
-                                    color: 0xFF0000,
-                                    transparent: true,
-                                    opacity: 1
-                                });
-                                stlequipos2.opacity = 1;
-
-                            } else if (data[1] == "FALLANDO") {
-                                stlequipos2 = new THREE.MeshLambertMaterial({
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'FALLANDO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0xFF9900,
                                     transparent: true,
                                     opacity: 1
                                 });
-                                stlequipos2.opacity = 1;
+                                stlequipos4.opacity = 1;
 
-                            } else if (data[1] == "EN MANTENCION") {
-                                stlequipos2 = new THREE.MeshLambertMaterial({
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'SIN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0xFF0000,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'EN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
                                     color: 0x9933CC,
                                     transparent: true,
                                     opacity: 1
                                 });
-                                stlequipos2.opacity = 1;
+                                stlequipos4.opacity = 1;
 
-                            }
-                            var mesh = new THREE.Mesh(geometry, stlequipos2);
-                            mesh.frustumCulled = false;
-                            mesh.position.set(0, y, 0);
-                            mesh.scale.set(0.2, 0.2, 0.2);
-                            mesh.userData.equipo = data[0];
-                            mesh.userData.estadoequipo = data[1];
-                            mesh.userData.recinto = data[3];
-                            mesh.userData.piso = data[2];
-                            mesh.userData.nombreinstalacion = data[4];
-                            mesh.userData.nombrefabricante = data[5];
-                            mesh.userData.modelo = data[6];
-                            mesh.userData.nombreproveedor = data[7];
-                            mesh.userData.fechainstalacion = data[9];
-                            mesh.userData.fechacaducidadgarantia = data[10];
-                            mesh.userData.acreditacion = data[11];
-                            mesh.userData.imagen = data[12];
-                            mesh.userData.x = data[13];
-                            mesh.userData.y = data[14];
-                            mesh.userData.z = data[15];
-                            mesh.name = stl;
-                            objects.push(mesh);
-                            scene.add(mesh);
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else {
+                            loader.load(direccion, function (geometry) {
+                                if (data[1] == "BUENO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
 
-                        });
+                                }
+                                else if (data[1] == "SIN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF0000,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "FALLANDO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF9900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "EN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x9933CC,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+
+                            });
+                        }
                     }else if(subid== 'AR'){
-                        loader.load(direccion, function (geometry) {
-                           if (data[1] == "BUENO")
-                            {
-                                stlequipos3 = new THREE.MeshLambertMaterial({color: 0x009900, transparent: true, opacity: 1});
-                                stlequipos3.opacity = 1;
-
-                            } else if (data[1] == "SIN MANTENCION")
-                            {
-                                stlequipos3 = new THREE.MeshLambertMaterial({color: 0xFF0000, transparent: true, opacity: 1});
-                                stlequipos3.opacity = 1;
-
-                            } else if (data[1] == "FALLANDO")
-                            {
-                                stlequipos3 = new THREE.MeshLambertMaterial({color: 0xFF9900, transparent: true, opacity: 1});
-                                stlequipos3.opacity = 1;
-
-                            } else if (data[1] == "EN MANTENCION")
-                            {
-                                stlequipos3 = new THREE.MeshLambertMaterial({color: 0x9933CC, transparent: true, opacity: 1});
-                                stlequipos3.opacity = 1;
-
-                            }
-                            var mesh = new THREE.Mesh(geometry, stlequipos3);
-                             mesh.frustumCulled = false;
-                            mesh.position.set(0, y, 0);
-                            mesh.scale.set(0.2, 0.2, 0.2);
-                            mesh.userData.nombreequipo = data[0];
-                            mesh.userData.estadoequipo = data[1];
-                            mesh.userData.recinto = data[3];
-                            mesh.userData.piso = data[2];
-                            mesh.userData.tipoequipo = data[4];
-                            mesh.userData.nombrefabricante = data[5];
-                            mesh.userData.numeromodelo = data[6];
-                            mesh.userData.nombreproveedor = data[7];
-                            mesh.userData.fechainstalacion = data[9];
-                            mesh.userData.fechacaducidadgarantia = data[10];
-                            mesh.userData.acreditacion = data[11];
-                            mesh.userData.imagen = data[12];
-                            mesh.userData.x = data[13];
-                            mesh.userData.y = data[14];
-                            mesh.userData.z = data[15];
-                            mesh.name = stl;
-                            objects.push(mesh);
-                            scene.add(mesh);
-                            });
-                    }else if(subid== 'AL'){
-                        loader.load(direccion, function (geometry) {
-                            //console.log(data);
-                            if (data[1] == "BUENO")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0x009900, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            } else if (data[1] == "SIN MANTENCION")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0xFF0000, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            } else if (data[1] == "FALLANDO")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0xFF9900, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            } else if (data[1] == "EN MANTENCION")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0x9933CC, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            }
-                            var mesh = new THREE.Mesh(geometry, stlequipos4);
-                            mesh.frustumCulled = false;
-                            mesh.position.set(0, y, 0);
-                            mesh.scale.set(0.2, 0.2, 0.2);
-                            mesh.userData.equipo = data[0];
-                            mesh.userData.estadoequipo = data[1];
-                            mesh.userData.recinto = data[3];
-                            mesh.userData.piso = data[2];
-                            mesh.userData.nombreinstalacion = data[4];
-                            mesh.userData.nombrefabricante = data[5];
-                            mesh.userData.modelo = data[6];
-                            mesh.userData.nombreproveedor = data[7];
-                            mesh.userData.fechainstalacion = data[9];
-                            mesh.userData.fechacaducidadgarantia = data[10];
-                            mesh.userData.acreditacion = data[11];
-                            mesh.userData.imagen = data[12];
-                            mesh.userData.x = data[13];
-                            mesh.userData.y = data[14];
-                            mesh.userData.z = data[15];
-                            mesh.name = stl;
-                            objects.push(mesh);
-                            scene.add(mesh);
-
-                        });
-                    }else if(subid== 'AP'){
-                        loader.load(direccion, function (geometry) {
-                            //console.log(data);
-                            if (data[1] == "BUENO")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0x009900, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            } else if (data[1] == "SIN MANTENCION")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0xFF0000, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            } else if (data[1] == "FALLANDO")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0xFF9900, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            } else if (data[1] == "EN MANTENCION")
-                            {
-                                stlequipos4 = new THREE.MeshLambertMaterial({color: 0x9933CC, transparent: true, opacity: 1});
-                                stlequipos4.opacity = 1;
-
-                            }
-                            var mesh = new THREE.Mesh(geometry, stlequipos4);
-                            mesh.frustumCulled = false;
-                            mesh.position.set(0, y, 0);
-                            mesh.scale.set(0.2, 0.2, 0.2);
-                            mesh.userData.equipo = data[0];
-                            mesh.userData.estadoequipo = data[1];
-                            mesh.userData.recinto = data[3];
-                            mesh.userData.piso = data[2];
-                            mesh.userData.nombreinstalacion = data[4];
-                            mesh.userData.nombrefabricante = data[5];
-                            mesh.userData.modelo = data[6];
-                            mesh.userData.nombreproveedor = data[7];
-                            mesh.userData.fechainstalacion = data[9];
-                            mesh.userData.fechacaducidadgarantia = data[10];
-                            mesh.userData.acreditacion = data[11];
-                            mesh.userData.imagen = data[12];
-                            mesh.userData.x = data[13];
-                            mesh.userData.y = data[14];
-                            mesh.userData.z = data[15];
-                            mesh.name = stl;
-                            objects.push(mesh);
-                            scene.add(mesh);
-
-                        });
-                    }else if(subid== 'EI'){
-                            if(flag == 'BUENO'){
-                                objects = [];
-                                loader.load(direccion, function (geometry) {
-                                        stlequipos4 = new THREE.MeshLambertMaterial({
-                                            color: 0x009900,
-                                            transparent: true,
-                                            opacity: 1
-                                        });
-                                        stlequipos4.opacity = 1;
-
-                                    var mesh = new THREE.Mesh(geometry, stlequipos4);
-                                    mesh.frustumCulled = false;
-                                    mesh.position.set(0, y, 0);
-                                    mesh.scale.set(0.2, 0.2, 0.2);
-                                    mesh.userData.equipo = data[0];
-                                    mesh.userData.estadoequipo = data[1];
-                                    mesh.userData.recinto = data[3];
-                                    mesh.userData.piso = data[2];
-                                    mesh.userData.nombreinstalacion = data[4];
-                                    mesh.userData.nombrefabricante = data[5];
-                                    mesh.userData.modelo = data[6];
-                                    mesh.userData.nombreproveedor = data[7];
-                                    mesh.userData.fechainstalacion = data[9];
-                                    mesh.userData.fechacaducidadgarantia = data[10];
-                                    mesh.userData.acreditacion = data[11];
-                                    mesh.userData.imagen = data[12];
-                                    mesh.userData.x = data[13];
-                                    mesh.userData.y = data[14];
-                                    mesh.userData.z = data[15];
-                                    mesh.name = stl;
-                                    objects.push(mesh);
-                                    scene.add(mesh);
+                        if(flag == 'BUENO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0x009900,
+                                    transparent: true,
+                                    opacity: 1
                                 });
-                            }
-                            else if(flag == 'FALLANDO'){
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'FALLANDO'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
                                 stlequipos4 = new THREE.MeshLambertMaterial({
@@ -760,7 +1045,7 @@ $tipousuario=$row123['tipousuario'];
                                 scene.add(mesh);
                             });
                         }
-                            else if(flag == 'SIN MANTENCION'){
+                        else if(flag == 'SIN MANTENCION'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
                                 stlequipos4 = new THREE.MeshLambertMaterial({
@@ -794,7 +1079,7 @@ $tipousuario=$row123['tipousuario'];
                                 scene.add(mesh);
                             });
                         }
-                            else if(flag == 'EN MANTENCION'){
+                        else if(flag == 'EN MANTENCION'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
                                 stlequipos4 = new THREE.MeshLambertMaterial({
@@ -828,71 +1113,675 @@ $tipousuario=$row123['tipousuario'];
                                 scene.add(mesh);
                             });
                         }
-                            else {
-                                loader.load(direccion, function (geometry) {
-                                    if (data[1] == "BUENO") {
-                                        stlequipos4 = new THREE.MeshLambertMaterial({
-                                            color: 0x009900,
-                                            transparent: true,
-                                            opacity: 1
-                                        });
-                                        stlequipos4.opacity = 1;
+                        else {
+                            loader.load(direccion, function (geometry) {
+                                if (data[1] == "BUENO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
 
-                                    }
-                                    else if (data[1] == "SIN MANTENCION") {
-                                        stlequipos4 = new THREE.MeshLambertMaterial({
-                                            color: 0xFF0000,
-                                            transparent: true,
-                                            opacity: 1
-                                        });
-                                        stlequipos4.opacity = 1;
+                                }
+                                else if (data[1] == "SIN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF0000,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
 
-                                    }
-                                    else if (data[1] == "FALLANDO") {
-                                        stlequipos4 = new THREE.MeshLambertMaterial({
-                                            color: 0xFF9900,
-                                            transparent: true,
-                                            opacity: 1
-                                        });
-                                        stlequipos4.opacity = 1;
+                                }
+                                else if (data[1] == "FALLANDO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF9900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
 
-                                    }
-                                    else if (data[1] == "EN MANTENCION") {
-                                        stlequipos4 = new THREE.MeshLambertMaterial({
-                                            color: 0x9933CC,
-                                            transparent: true,
-                                            opacity: 1
-                                        });
-                                        stlequipos4.opacity = 1;
+                                }
+                                else if (data[1] == "EN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x9933CC,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
 
-                                    }
+                                }
 
-                                    var mesh = new THREE.Mesh(geometry, stlequipos4);
-                                    mesh.frustumCulled = false;
-                                    mesh.position.set(0, y, 0);
-                                    mesh.scale.set(0.2, 0.2, 0.2);
-                                    mesh.userData.equipo = data[0];
-                                    mesh.userData.estadoequipo = data[1];
-                                    mesh.userData.recinto = data[3];
-                                    mesh.userData.piso = data[2];
-                                    mesh.userData.nombreinstalacion = data[4];
-                                    mesh.userData.nombrefabricante = data[5];
-                                    mesh.userData.modelo = data[6];
-                                    mesh.userData.nombreproveedor = data[7];
-                                    mesh.userData.fechainstalacion = data[9];
-                                    mesh.userData.fechacaducidadgarantia = data[10];
-                                    mesh.userData.acreditacion = data[11];
-                                    mesh.userData.imagen = data[12];
-                                    mesh.userData.x = data[13];
-                                    mesh.userData.y = data[14];
-                                    mesh.userData.z = data[15];
-                                    mesh.name = stl;
-                                    objects.push(mesh);
-                                    scene.add(mesh);
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
 
+                            });
+                        }
+                    }else if(subid== 'AL'){
+                        if(flag == 'BUENO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0x009900,
+                                    transparent: true,
+                                    opacity: 1
                                 });
-                            }
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'FALLANDO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0xFF9900,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'SIN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0xFF0000,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'EN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0x9933CC,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else {
+                            loader.load(direccion, function (geometry) {
+                                if (data[1] == "BUENO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "SIN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF0000,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "FALLANDO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF9900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "EN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x9933CC,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+
+                            });
+                        }
+                    }else if(subid== 'AP'){
+                        if(flag == 'BUENO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0x009900,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'FALLANDO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0xFF9900,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'SIN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0xFF0000,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'EN MANTENCION'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                stlequipos4 = new THREE.MeshLambertMaterial({
+                                    color: 0x9933CC,
+                                    transparent: true,
+                                    opacity: 1
+                                });
+                                stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else {
+                            loader.load(direccion, function (geometry) {
+                                if (data[1] == "BUENO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "SIN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF0000,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "FALLANDO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF9900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "EN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x9933CC,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+
+                            });
+                        }
+                    }else if(subid== 'EI'){
+                        if(flag == 'BUENO'){
+                            objects = [];
+                            loader.load(direccion, function (geometry) {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+                            });
+                        }
+                        else if(flag == 'FALLANDO'){
+                        objects = [];
+                        loader.load(direccion, function (geometry) {
+                            stlequipos4 = new THREE.MeshLambertMaterial({
+                                color: 0xFF9900,
+                                transparent: true,
+                                opacity: 1
+                            });
+                            stlequipos4.opacity = 1;
+
+                            var mesh = new THREE.Mesh(geometry, stlequipos4);
+                            mesh.frustumCulled = false;
+                            mesh.position.set(0, y, 0);
+                            mesh.scale.set(0.2, 0.2, 0.2);
+                            mesh.userData.equipo = data[0];
+                            mesh.userData.estadoequipo = data[1];
+                            mesh.userData.recinto = data[3];
+                            mesh.userData.piso = data[2];
+                            mesh.userData.nombreinstalacion = data[4];
+                            mesh.userData.nombrefabricante = data[5];
+                            mesh.userData.modelo = data[6];
+                            mesh.userData.nombreproveedor = data[7];
+                            mesh.userData.fechainstalacion = data[9];
+                            mesh.userData.fechacaducidadgarantia = data[10];
+                            mesh.userData.acreditacion = data[11];
+                            mesh.userData.imagen = data[12];
+                            mesh.userData.x = data[13];
+                            mesh.userData.y = data[14];
+                            mesh.userData.z = data[15];
+                            mesh.name = stl;
+                            objects.push(mesh);
+                            scene.add(mesh);
+                        });
                     }
+                        else if(flag == 'SIN MANTENCION'){
+                        objects = [];
+                        loader.load(direccion, function (geometry) {
+                            stlequipos4 = new THREE.MeshLambertMaterial({
+                                color: 0xFF0000,
+                                transparent: true,
+                                opacity: 1
+                            });
+                            stlequipos4.opacity = 1;
+
+                            var mesh = new THREE.Mesh(geometry, stlequipos4);
+                            mesh.frustumCulled = false;
+                            mesh.position.set(0, y, 0);
+                            mesh.scale.set(0.2, 0.2, 0.2);
+                            mesh.userData.equipo = data[0];
+                            mesh.userData.estadoequipo = data[1];
+                            mesh.userData.recinto = data[3];
+                            mesh.userData.piso = data[2];
+                            mesh.userData.nombreinstalacion = data[4];
+                            mesh.userData.nombrefabricante = data[5];
+                            mesh.userData.modelo = data[6];
+                            mesh.userData.nombreproveedor = data[7];
+                            mesh.userData.fechainstalacion = data[9];
+                            mesh.userData.fechacaducidadgarantia = data[10];
+                            mesh.userData.acreditacion = data[11];
+                            mesh.userData.imagen = data[12];
+                            mesh.userData.x = data[13];
+                            mesh.userData.y = data[14];
+                            mesh.userData.z = data[15];
+                            mesh.name = stl;
+                            objects.push(mesh);
+                            scene.add(mesh);
+                        });
+                    }
+                        else if(flag == 'EN MANTENCION'){
+                        objects = [];
+                        loader.load(direccion, function (geometry) {
+                            stlequipos4 = new THREE.MeshLambertMaterial({
+                                color: 0x9933CC,
+                                transparent: true,
+                                opacity: 1
+                            });
+                            stlequipos4.opacity = 1;
+
+                            var mesh = new THREE.Mesh(geometry, stlequipos4);
+                            mesh.frustumCulled = false;
+                            mesh.position.set(0, y, 0);
+                            mesh.scale.set(0.2, 0.2, 0.2);
+                            mesh.userData.equipo = data[0];
+                            mesh.userData.estadoequipo = data[1];
+                            mesh.userData.recinto = data[3];
+                            mesh.userData.piso = data[2];
+                            mesh.userData.nombreinstalacion = data[4];
+                            mesh.userData.nombrefabricante = data[5];
+                            mesh.userData.modelo = data[6];
+                            mesh.userData.nombreproveedor = data[7];
+                            mesh.userData.fechainstalacion = data[9];
+                            mesh.userData.fechacaducidadgarantia = data[10];
+                            mesh.userData.acreditacion = data[11];
+                            mesh.userData.imagen = data[12];
+                            mesh.userData.x = data[13];
+                            mesh.userData.y = data[14];
+                            mesh.userData.z = data[15];
+                            mesh.name = stl;
+                            objects.push(mesh);
+                            scene.add(mesh);
+                        });
+                    }
+                        else {
+                            loader.load(direccion, function (geometry) {
+                                if (data[1] == "BUENO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x009900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "SIN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF0000,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "FALLANDO") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0xFF9900,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+                                else if (data[1] == "EN MANTENCION") {
+                                    stlequipos4 = new THREE.MeshLambertMaterial({
+                                        color: 0x9933CC,
+                                        transparent: true,
+                                        opacity: 1
+                                    });
+                                    stlequipos4.opacity = 1;
+
+                                }
+
+                                var mesh = new THREE.Mesh(geometry, stlequipos4);
+                                mesh.frustumCulled = false;
+                                mesh.position.set(0, y, 0);
+                                mesh.scale.set(0.2, 0.2, 0.2);
+                                mesh.userData.equipo = data[0];
+                                mesh.userData.estadoequipo = data[1];
+                                mesh.userData.recinto = data[3];
+                                mesh.userData.piso = data[2];
+                                mesh.userData.nombreinstalacion = data[4];
+                                mesh.userData.nombrefabricante = data[5];
+                                mesh.userData.modelo = data[6];
+                                mesh.userData.nombreproveedor = data[7];
+                                mesh.userData.fechainstalacion = data[9];
+                                mesh.userData.fechacaducidadgarantia = data[10];
+                                mesh.userData.acreditacion = data[11];
+                                mesh.userData.imagen = data[12];
+                                mesh.userData.x = data[13];
+                                mesh.userData.y = data[14];
+                                mesh.userData.z = data[15];
+                                mesh.name = stl;
+                                objects.push(mesh);
+                                scene.add(mesh);
+
+                            });
+                        }
+                    }
+                    listaEquiposColor();
                 }
 
 
