@@ -339,7 +339,7 @@ $tipousuario=$row123['tipousuario'];
                         mesh.renderOrder = 3;
                         mesh.doubleSided = true;
                         mesh.frustumCulled = false;
-                        mesh.position.set(0, 0, 0);
+                        mesh.position.set(0, 0, 0);// izquerda derecha, lejania cercania, Altura
                         mesh.scale.set(0.2, 0.2, 0.2);
                         mesh.castShadow = true;
                         //mesh.receiveShadow = true;
@@ -574,7 +574,8 @@ $tipousuario=$row123['tipousuario'];
 
                             });
                         }
-                    }else if(subid == 'EM') {
+                    }
+                    else if(subid == 'EM') {
                         if(flag == 'BUENO'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
@@ -775,7 +776,8 @@ $tipousuario=$row123['tipousuario'];
 
                             });
                         }
-                    }else if(subid == 'AS'){
+                    }
+                    else if(subid == 'AS'){
                         if(flag == 'BUENO'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
@@ -976,7 +978,8 @@ $tipousuario=$row123['tipousuario'];
 
                             });
                         }
-                    }else if(subid== 'AR'){
+                    }
+                    else if(subid== 'AR'){
                         if(flag == 'BUENO'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
@@ -1177,7 +1180,8 @@ $tipousuario=$row123['tipousuario'];
 
                             });
                         }
-                    }else if(subid== 'AL'){
+                    }
+                    else if(subid== 'AL'){
                         if(flag == 'BUENO'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
@@ -1378,7 +1382,8 @@ $tipousuario=$row123['tipousuario'];
 
                             });
                         }
-                    }else if(subid== 'AP'){
+                    }
+                    else if(subid== 'AP'){
                         if(flag == 'BUENO'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
@@ -1579,7 +1584,8 @@ $tipousuario=$row123['tipousuario'];
 
                             });
                         }
-                    }else if(subid== 'EI'){
+                    }
+                    else if(subid== 'EI'){
                         if(flag == 'BUENO'){
                             objects = [];
                             loader.load(direccion, function (geometry) {
@@ -1784,8 +1790,6 @@ $tipousuario=$row123['tipousuario'];
                     listaEquiposColor();
                 }
 
-
-
                 function correo() {
                     $.ajax({
                         url: 'notificaciones.php', //the script to call to get data          
@@ -1960,8 +1964,8 @@ $tipousuario=$row123['tipousuario'];
                     container = document.createElement('div');
                     document.body.appendChild(container);
 
-                    camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 450000);
-                    camera.position.set(70000, 90000, 7500);
+                    camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight,1, 450000); //profundidad, centro,1,
+                    camera.position.set(7000, 90000, 7700); //izquerda derecha, profundidad, altura
                     camera.up.set(0, 0, 1);
                 }
 
@@ -2045,7 +2049,7 @@ $tipousuario=$row123['tipousuario'];
                     controls.enableZoom = true;
                     controls.maxDistance = 80000;
                     //controls.mouseButtons = { ORBIT: THREE.MOUSE.RIGHT, ZOOM: THREE.MOUSE.MIDDLE, PAN: THREE.MOUSE.LEFT };
-                    controls.target.set(-10863, -15420, 0); //angulo inicio
+                    controls.target.set(window.innerWidth * 4, window.innerHeight, 100); //angulo inicio
                     controls.maxPolarAngle = Math.PI / 2;
                     document.getElementById("search").disabled=false;
                     document.getElementById("search").focus();
@@ -2188,13 +2192,14 @@ $tipousuario=$row123['tipousuario'];
                             vecCamera.x = vecCamera.x / moduloVecCamera;
                             vecCamera.y = vecCamera.y / moduloVecCamera;
                             new TWEEN.Tween(camera.position).to({
-                                x: intercepcion[0].point.x + vecCamera.x * 650,
-                                y: intercepcion[0].point.y + vecCamera.y * 1000, z: target.userData.piso + 1300},
+                                x: intercepcion[0].point.x + vecCamera.x * 1650,
+                                y: intercepcion[0].point.y + vecCamera.y * -1100,
+                                z: target.userData.piso + 3300},
                                     1000).easing(TWEEN.Easing.Linear.None).start();
 
                             new TWEEN.Tween(controls.target).to({
                                 x: intercepcion[0].point.x,
-                                y: intercepcion[0].point.y, z: target.userData.piso + 400},
+                                y: intercepcion[0].point.y, z: target.userData.piso},
                                     1000).easing(TWEEN.Easing.Linear.None).onComplete(function () {
                                 controls.enabled = true;
                             }).start();
@@ -2317,6 +2322,7 @@ $tipousuario=$row123['tipousuario'];
                         }
                     });
                 }
+
                 function clearScene() {
 
                     var to_remove = [];
