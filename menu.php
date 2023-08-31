@@ -1,6 +1,6 @@
 <?php
 $enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
-mysql_select_db("bimcl_calvo_mackenna", $enlace);
+mysql_select_db("bimcl_cc", $enlace);
 
 //$enlace = mysql_connect("localhost:3306","root","");
 //mysql_select_db("hospital", $enlace);
@@ -131,8 +131,8 @@ document.oncontextmenu = function(){return false}
               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Equipos Médicos (<?= $row['cantidadEventos1']; ?>) </button></li>
               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_sb.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Servicios Básicos (<?= $row['cantidadEventos2']; ?>) </button></li>
               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Estructural (<?= $row['cantidadEventos3']; ?>) </button></li>
-              <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos4'];?>) </button></li>
-              <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones y Equipos Industriales(<?= $row['cantidadEventos5'];  ?>) </button></li>
+              <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos5'];?>) </button></li>
+              <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones y Equipos Industriales(<?= $row['cantidadEventos4'];  ?>) </button></li>
 
           </ul>
       </li>
@@ -168,8 +168,8 @@ document.oncontextmenu = function(){return false}
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Equipos Médicos (<?= $row['cantidadEventos1']; ?>) </button></li>
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_sb.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Servicios Básicos (<?= $row['cantidadEventos2']; ?>) </button></li>
            <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Estructural (<?= $row['cantidadEventos3']; ?>) </button></li>
-           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos4'];?>) </button></li>
-           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones y Equipos Industriales (<?= $row['cantidadEventos5'];  ?>) </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos5'];?>) </button></li>
+           <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones y Equipos Industriales (<?= $row['cantidadEventos4'];  ?>) </button></li>
        </ul>
    </li>
 
