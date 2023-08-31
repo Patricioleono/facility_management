@@ -1965,7 +1965,7 @@ $tipousuario=$row123['tipousuario'];
                     document.body.appendChild(container);
 
                     camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight,1, 450000); //profundidad, centro,1,
-                    camera.position.set(7000, 90000, 7700); //izquerda derecha, profundidad, altura
+                    camera.position.set(-50000, 90000, 27700); //izquerda derecha, profundidad, altura
                     camera.up.set(0, 0, 1);
                 }
 
@@ -2049,7 +2049,7 @@ $tipousuario=$row123['tipousuario'];
                     controls.enableZoom = true;
                     controls.maxDistance = 80000;
                     //controls.mouseButtons = { ORBIT: THREE.MOUSE.RIGHT, ZOOM: THREE.MOUSE.MIDDLE, PAN: THREE.MOUSE.LEFT };
-                    controls.target.set(window.innerWidth * 4, window.innerHeight, 100); //angulo inicio
+                    controls.target.set(window.innerWidth * 4, window.innerHeight, 3000 ); //angulo inicio
                     controls.maxPolarAngle = Math.PI / 2;
                     document.getElementById("search").disabled=false;
                     document.getElementById("search").focus();
