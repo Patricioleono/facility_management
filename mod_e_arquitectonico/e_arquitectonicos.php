@@ -36,8 +36,10 @@ $(document).ready(function() {
 	</head>
 	<body>
 		
-		<center><h1>Elemento Arquitectonico</h1></center>
-		
+		<!--center><h1>Elemento Arquitectonico</h1></center>
+        <form method="POST" action="../cargarDocumentos/index.php">
+            <button type="button" class="button2" onclick="form.submit()">Modelo Arquitectonico</button>
+        </form -->
 		<table  class="display" id="example" width="90%">
 <thead>
 

@@ -13,7 +13,7 @@
 	$resultado=$mysqli->query($query);
 	
 ?>
-<?php header( "refresh:1;url=http://www.bim.cl/BIM/hospital_calvo_mackenna/fichas/ficha_equipos_instalaciones.php?id=$id" ); ?>
+<?php header( "refresh:1;url=http://www.bim.cl/BIM/QA/fichas/ficha_equipos_instalaciones.php?id=$id" ); ?>
 
 <html>
 	<head>
