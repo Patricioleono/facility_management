@@ -19,7 +19,7 @@
 	}
 
 ?>
-<?php header( "refresh:1;url=http://www.bim.cl/BIM/QA/fichas/ficha_equipos_medicos.php?id=$id" ); ?>
+<?php header( "refresh:1;url=http://www.bim.cl/BIM/QA/modelo3D/chch.php" ); ?>
 
 <html>
 	<head>
