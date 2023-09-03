@@ -19,7 +19,7 @@
 	$piso=$_POST['piso'];
 	$sector=$_POST['recinto'];
 	$acreditacion=$_POST['acreditacion'];
-	$enlace = 'http://www.bim.cl/BIM/hospital_calvo_mackenna/fichas/ficha_artefactos.php?id='.$idunica;
+	$enlace = 'http://www.bim.cl/BIM/QA/fichas/ficha_artefactos.php?id='.$idunica;
 	
 	$query="INSERT INTO servbas (nombreequipo, idunica, tipoequipo, nombrefabricante, numeromodelo, numeroserie, nombreproveedor, codigoproveedor,
 		piso, recinto, preciocompra, fechainstalacion, fechacaducidadgarantia, responsablemantenimiento, estadoequipo, acreditacion,enlace) 

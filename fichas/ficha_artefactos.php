@@ -150,7 +150,7 @@
     <td><input style="width:auto;" class="button2" type="submit" name="enviar" value="Enviar" /></td>
     </center>
     <td>
-<center><input type="button" style="width:auto;" class="button2" value="Inicio" name="Regresar" onclick="location.href='http://www.bim.cl/BIM/hospital_calvo_mackenna/logeado.php'" /></center>
+<center><input type="button" style="width:auto;" class="button2" value="Inicio" name="Regresar" onclick="location.href='http://www.bim.cl/BIM/QA/logeado.php'" /></center>
 </td>
 </form>
 </tr>

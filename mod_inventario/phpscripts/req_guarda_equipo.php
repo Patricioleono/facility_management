@@ -25,7 +25,7 @@
 	$largo=$_POST['largo'];
 	$ancho=$_POST['ancho'];
 	$distanciaalpiso=$_POST['distanciaalpiso'];
-        $enlace='http://www.bim.cl/BIM/hospital_calvo_mackenna/fichas/ficha_equipos_medicos.php?id='.$idunica;
+        $enlace='http://www.bim.cl/BIM/QA/fichas/ficha_equipos_medicos.php?id='.$idunica;
 	
 	$query="INSERT INTO equipos (idunica,nombreequipo, tipoequipo, nombrefabricante, numeromodelo, numeroserie, versionsoftware, nombreproveedor, codigoproveedor, unidad, area, recinto, piso, preciocompra, fechainstalacion, fechacaducidadgarantia, responsablemantenimiento, estadoequipo, acreditacion,alto,largo,
 		ancho, distanciaalpiso, enlace) 

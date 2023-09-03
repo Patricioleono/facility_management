@@ -137,7 +137,7 @@
     <input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
     <td colspan="3" width="33.33%"><button type="button" class="button2" value="Enviar" title="Documentos" onclick="form.submit()">Historial de Equipo</button></td>
   </form>
-    <td colspan="3" width="33.33%"><input type="button" class="button2" value="Regresar" name="Regresar" onclick="location.href='http://www.bim.cl/BIM/hospital_calvo_mackenna/logeado.php'" /></td>
+    <td colspan="3" width="33.33%"><input type="button" class="button2" value="Regresar" name="Regresar" onclick="location.href='http://www.bim.cl/BIM/QA/logeado.php'" /></td>
    </tr> 
 </table>
 		
