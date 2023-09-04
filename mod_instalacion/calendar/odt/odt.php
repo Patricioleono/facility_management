@@ -111,7 +111,7 @@ background:transparent;
 <body style="background-color: #E7FBFF;">
 <div><h1 align="center">Orden de Trabajo</h1></div>
 <div id="tabla" align="center">
-<form onsubmit="return formulario(this)" name="odt_pdf" method="POST" enctype="multipart/form-data" target="_blank" action="odt_pdf2.php">
+<form onsubmit="return formulario(this)" name="odt_pdf" method="POST" enctype="multipart/form-data" action="odt_pdf2.php">
 <input  type="text" name="nombreusuario" value="<?php echo utf8_encode($nombreusuario);?>" style="display: none">
 <table width="90%" border='1'>
   <tr>
@@ -266,13 +266,19 @@ background:transparent;
     <td width="20%"></td>
     <td width="20%"></td>
     <td width="20%"></td>
-    <td width="20%"><button class="button2" onclick="javascript:history.back(1)">Volver Atrás</button></td>
-    <td width="20%"><input class="button2"  type="submit" name="enviar" value="Crear y Descargar Orden de Trabajo" /></td>
+        <td width="20%"><input class="button2"  type="submit" name="volver" value="Crear y Descargar Orden de Trabajo" /></td>
+        <td width="20%"><input class="button2" type="submit" name="volver" value="Volver Atrás"></input></td>
+
+</form>
   </tr>
 </table>
-</form>
+
 
 </div>
-
+<script>
+    function redireccionar(){
+        location.href ='http://bim.cl/BIM/QA/logeado.php';
+    }
+</script>
 </body>
 </html>
