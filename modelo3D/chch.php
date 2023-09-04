@@ -2030,8 +2030,8 @@ $tipousuario=$row123['tipousuario'];
 
                     listaEquipos();
 
-                    listaEquiposColor();
-
+                   //listaEquiposColor();
+                    setInterval("listaEquiposColor();", 10000);
                     statsNode.innerHTML = dirEquipos;
                     raycast = new THREE.Raycaster();
                     mouse = new THREE.Vector2();
