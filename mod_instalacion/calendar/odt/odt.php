@@ -267,7 +267,7 @@ background:transparent;
     <td width="20%"></td>
     <td width="20%"></td>
         <td width="20%"><input class="button2"  type="submit" name="volver" value="Crear y Descargar Orden de Trabajo" /></td>
-        <td width="20%"><input class="button2" type="submit" name="volver" value="Volver Atrás"></input></td>
+        <td width="20%"><input class="button2" type="submit" name="volver" value="Volver Atrás" /></td>
 
 </form>
   </tr>
@@ -275,10 +275,5 @@ background:transparent;
 
 
 </div>
-<script>
-    function redireccionar(){
-        location.href ='http://bim.cl/BIM/QA/logeado.php';
-    }
-</script>
 </body>
 </html>

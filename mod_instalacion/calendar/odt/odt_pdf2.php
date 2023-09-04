@@ -25,7 +25,7 @@
 	$ext=".pdf";
 
 	if($_POST['volver'] == 'Volver Atrás'){
-		header("refresh:1;url=../../mdins.php");
+		header("refresh:1;url=../../../logeado.php");
 	}elseif ($_POST['volver'] == 'Crear y Descargar Orden de Trabajo'){
 
 		$query1234="UPDATE instalaciones SET estadoequipo='EN MANTENCION' WHERE idunica='$idelemento'";
@@ -267,17 +267,6 @@
 		mail($email,$subject,utf8_encode($body),$headers,"fernandopalma@bim.cl");
 
 }
-	?>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>redireccionando</title>
-</head>
-<body>
-<h1>REDIRECCIONANDO NAVEGADOR</h1>
-</body>
-</html>
+
+ echo "<h1>REDIRECCIONANDO NAVEGADOR</h1>";
+
