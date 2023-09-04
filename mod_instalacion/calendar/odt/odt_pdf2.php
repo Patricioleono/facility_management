@@ -71,9 +71,6 @@
 		$nombreedificio=$rowedificio['nombre'];
 
 
-		?>
-		<?php
-
 		$pdf = new FPDF('P','mm','Letter');
 		$pdf -> AddPage();
 		$pdf -> SetFont('Arial','B','24');
@@ -245,10 +242,7 @@
 
 		$pdf ->Output($dir);
 		$pdf ->Output($valor2,'D');
-
-
-		?>
-		<?php
+        
 		$email = 'fernandopalma@bim.cl';//The email address the cron job will reach when successful.
 		$subject = 'Aviso de Orden de Trabajo';
 		$body = 'Estimado,';
