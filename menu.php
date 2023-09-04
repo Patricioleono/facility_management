@@ -143,6 +143,12 @@ document.oncontextmenu = function(){return false}
            </ul>
        </li>
        <li>
+           <div class="link"><i class="icon-folder-open"></i> Servicios generales <i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('correo_servicios.php','centro');" value="Gastos" name="Gastos" > Correo Interno </button></li>
+           </ul>
+       </li>
+       <li>
            <div class="link"><i class="icon-bell-1"></i> Notificaciones de Tareas (<?= $row['notificacionesTotales']; ?>)<i class="icon-down-open"></i></div>
            <ul class="submenu">
                <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Equipos Médicos (<?= $row['cantidadEventos1']; ?>) </button></li>
