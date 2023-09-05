@@ -76,7 +76,7 @@ document.oncontextmenu = function(){return false}
        <li>
            <div class="link"><i class="icon-folder-open"></i> Administración <i class="icon-down-open"></i></div>
            <ul class="submenu">
-               <li><button type="button" class="accordion-content" onclick="window.open('edificio/piso.php','centro');" value="Pisos y Sectores" name="Pisos y Sectores" > Pisos y Sectores </button></li>
+               <!-- li><button type="button" class="accordion-content" onclick="window.open('edificio/piso.php','centro');" value="Pisos y Sectores" name="Pisos y Sectores" > Pisos y Sectores </button></li -->
                <li><button type="button" class="accordion-content" onclick="window.open('administrar_usuarios.php','centro');" value="Administrar Usuarios" name="Administrar Usuarios" > Administrar Usuarios </button></li>
            </ul>
        </li>

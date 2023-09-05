@@ -28,6 +28,7 @@ if(isset($_POST['correo'])){
     echo "<h1>Correo no puede estar Vacio</h1>";
     header("refresh:1; url = ../administrar_usuarios.php");
 }
+header("refresh:1; url = ../administrar_usuarios.php");
 
 ?>
 

@@ -85,14 +85,14 @@
                 for($i = 0; $i < count($row); $i++){
                     $idAcciones = $row[$i][4];
                     echo '<tr>';
-                    echo '<td><center>'.ucfirst($row[$i][0]);'</center></td>';
-                    echo '<td><center>'.ucfirst($row[$i][1]);'</center></td>';
-                    echo '<td><center>'.$row[$i][2];'</center></td>';
-                    echo '<td><center>'.$row[$i][3];'</center></td>';
+                    echo '<td><center>'.ucfirst($row[$i][0]).'</center></td>';
+                    echo '<td><center>'.ucfirst($row[$i][1]).'</center></td>';
+                    echo '<td><center>'.$row[$i][2].'</center></td>';
+                    echo '<td><center>'.$row[$i][3].'</center></td>';
                     echo "<td width='25px'>
                             <center>
                                 <form method='POST' action='administracion_usuarios/editar_usuario.php'>
-                                  <input type='hidden' name='id' value=' $idAcciones' />
+                                  <input type='hidden' name='id' value='$idAcciones' />
                                   <button type='button' value='Enviar' title='Editar' onclick='form.submit()'><img width='20px' height='20px' src='images/editar.png'></button>
                                 </form>
                               </center>
