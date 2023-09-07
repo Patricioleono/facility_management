@@ -1,9 +1,9 @@
 <?php
-$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
-mysql_select_db("bimcl_cc", $enlace);
+//$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
+//mysql_select_db("bimcl_cc", $enlace);
 
-//$enlace = mysql_connect("localhost:3306","root","");
-//mysql_select_db("hospital", $enlace);
+$enlace = mysql_connect("localhost:3306","root","");
+mysql_select_db("bimcl_cc", $enlace);
 
 $result = mysql_query("
 SELECT X.cantidadEventos1, X.cantidadEventos2, X.cantidadEventos3, X.cantidadEventos4, X.cantidadEventos5,
@@ -163,6 +163,52 @@ document.oncontextmenu = function(){return false}
        </li>
 
   <?php }elseif ($rol == 2){ ?>
+       <!-- barra laterl a modificar por privilegio-->
+       <li>
+           <div class="link"><i class="icon-folder-open"></i> Administración <i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('administrar_usuarios.php','centro');" value="Administrar Usuarios" name="Administrar Usuarios" style="text-shadow:0.1em 0.1em 0.2em red; cursor: default;"> Administrar Usuarios </button></li>
+           </ul>
+       </li>
+       <li>
+           <div class="link"><i class="icon-chart-line"></i> Balance <i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('year.php','centro');" value="Gastos" name="Gastos" > Historial de Gastos </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('presupuesto.php','centro');" value="Gastos" name="Gastos" > Presupuesto anual</button></li>
+           </ul>
+       </li>
+       <li>
+           <div class="link"><i class="icon-hospital"></i> Infraestructura <i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('mod_e_arquitectonico/e_arquitectonicos.php','centro');" value="Elementos Arquitectónicos" name="Elementos Arquitectónicos" > Arquitectura </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('mod_estructura/estructura.php','centro');" value="Estructura" name="Estructura" > Estructura </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('mod_instalacion/mdins.php?tipo=<?php echo $tipousuario ?>','centro');" value="Instalaciones" name="Instalaciones" > Especialidades </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('mod_inventario/mdi.php','centro');" value="Gestión de Equipos Médicos" name="Gestión de Equipos Médicos">Equipos Médicos </button></li>
+           </ul>
+       </li>
+       <li>
+           <div class="link"><i class="icon-cog-alt"></i> Repuestos <i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('mod_repuestos/mdr.php','centro');" title="mdr.php?tipo=<?php echo $tipousuario?>" value="Estructura" name="Estructura" > Repuestos Médicos </button></li>
+           </ul>
+       </li>
+       <li>
+           <div class="link"><i class="icon-folder-open"></i> Servicios generales <i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('correo_servicios.php','centro');" value="Gastos" name="Gastos" > Correo Interno </button></li>
+           </ul>
+       </li>
+       <li>
+           <div class="link"><i class="icon-bell-1"></i> Notificaciones de Tareas (<?= $row['notificacionesTotales']; ?>)<i class="icon-down-open"></i></div>
+           <ul class="submenu">
+               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Equipos Médicos (<?= $row['cantidadEventos1']; ?>) </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Estructural (<?= $row['cantidadEventos3']; ?>) </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_e_a.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Elementos Arquitectonicos (<?= $row['cantidadEventos5'];?>) </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('notificaciones/notificaciones_i.php','centro');" value="Mantenimiento Equipos" name="Mantenimiento Equipos" > Mantenimiento Instalaciones y Equipos (<?= $row['cantidadEventos4'];  ?>) </button></li>
+
+           </ul>
+       </li>
+           <!-- barra laterl a modificar por privilegio-->
       <li>
           <div class="link"><button type="button" class="accordion-content" onclick="window.open('modelo3D/chch.php','_blank');" value="Modelo3D" name="Modelo3D" > Modelo 3D</button>
       </li>

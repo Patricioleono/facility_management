@@ -1,14 +1,14 @@
 <?php	
 // desarrollo local
 
-/*$mysqli=new mysqli(
+$mysqli=new mysqli(
     "localhost:3306"
     ,"root"
     ,""
-    ,"hospital");
-*/
+    ,"bimcl_cc");
 
 
+/*
 // produccion
  $mysqli=new mysqli(
      "localhost:3306"
@@ -16,7 +16,7 @@
      ,"bimcalvo2017"
      ,"bimcl_cc");
     
-
+*/
 if(mysqli_connect_errno()){
 echo 'Conexion Fallida : ', mysqli_connect_error();
 exit();
