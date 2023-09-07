@@ -39,8 +39,8 @@
                         <select name="rolusu" id="rol">
                             <option value='1'>Administrador</option>
                             <option value='2'>Visita</option>
-                            <option value='3'>Usuario General</option>
-                            <option value='4'>Entes Fiscalizadores</option>
+                            <option value='3'>Usuario Interno</option>
+                            <option value='4'>Fiscalizadores</option>
                         </select>
                     </td>
                 </tr>

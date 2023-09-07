@@ -3,17 +3,13 @@ require_once "../conexion2.php";
 $id = $_POST['id'];
 
 $sql = "SELECT *
-        , (SELECT rol_rol FROM roles WHERE rol_id = X.tipousuario) AS ROL
-        , (SELECT rol_id FROM roles WHERE rol_id = X.tipousuario) AS ID_ROL
-        FROM 
-            ( SELECT *
-              FROM usuarios 
-              WHERE idusuario = $id
-            ) X";
+          FROM usuarios 
+          WHERE idusuario = $id";
 
 $result = $con->query($sql);
 
 $data = $result->fetch_assoc();
+//var_dump($data);
 ?>
 
 
@@ -45,13 +41,13 @@ $data = $result->fetch_assoc();
                     <td colspan="1"><b>Contraseña:</b></td>
                     <td colspan="1"><input style="width:100%" id="input" type="text" name="passsuser" placeholder="Ingresar Contraseña" value="<?php echo $data['password']?>"></td>
                 </tr>
-                <tr>
+                <!--tr>
                     <td colspan="1"><b><label for="rol">Seleccionar Rol:</label></b></td>
                     <td colspan="1">
                         <select name="rolusu" id="rol">
-                                <option value="<?= $data['ID_ROL']; ?>"><?= $data['ROL']; ?></option>
+                                <option value="<?php echo $data['ID_ROL']; ?>"><?php echo $data['ROL']; ?></option>
                         </select></td>
-                </tr>
+                </tr-->
                 <tr>
                     <td colspan="1"><b>Nombre:</b></td>
                     <td colspan="1"><input style="width:100%" id="input" type="text" name="nombrepersonal" placeholder="Ingresar Nombre" value="<?php echo $data['nombre']; ?>"></td>
