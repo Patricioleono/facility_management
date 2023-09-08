@@ -11,6 +11,8 @@ $sql23 = "SELECT * FROM usuarios WHERE idusuario = '$idusuario'";
 $rec1 = mysql_query($sql23);
 $row123 = mysql_fetch_array($rec1);
 $tipousuario=$row123['tipousuario'];
+
+
 ?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=big5">
@@ -232,6 +234,7 @@ $tipousuario=$row123['tipousuario'];
     </head>
 
     <body>
+
         <div id="info">
             <img src="bim.png" align="left">
         </div>
@@ -313,6 +316,7 @@ $tipousuario=$row123['tipousuario'];
 
         </script>
         <script>
+                var tipoUsuario = <?php echo $tipousuario; ?>;
                 var container;
                 var altura = 0, idglobal;
                 var selectedText;
@@ -1899,7 +1903,13 @@ $tipousuario=$row123['tipousuario'];
                                         statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + dirEquipos2[j][8] + "' target='_blank'>Ficha Equipo ID: " + dirEquipos2[j][8] + "</a><br><br>Equipo: " + dirEquipos2[j][0] + "<br><br>Estado: " + dirEquipos2[j][1] + "<br><br>Instalacion: " + dirEquipos2[j][4] + "<br><br>Fabricante: " + dirEquipos2[j][5] + "<br><br>Modelo: " + dirEquipos2[j][6] + "<br><br>Proveedor: " + dirEquipos2[j][7] + "<br><br>Recinto: " + dirEquipos2[j][3] + "<br><br>Fecha instalaci車n: " + dirEquipos2[j][9] + "<br><br>Caducidad Garantia: " + dirEquipos2[j][10] + "<br><br>Categoria: " + dirEquipos2[j][11] + "<br><br><IMG  SRC=../mod_instalacion/" + dirEquipos2[j][12] + " height='180px' width='180px' border='1.5px'><br><br>";
 
                                         }else if(eid=='EI'){
-                                        statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + dirEquipos2[j][8] + "' target='_blank'>Ficha Equipo ID: " + dirEquipos2[j][8] + "</a><br><br>Equipo: " + dirEquipos2[j][0] + "<br><br>Estado: " + dirEquipos2[j][1] + "<br><br>Instalacion: " + dirEquipos2[j][4] + "<br><br>Fabricante: " + dirEquipos2[j][5] + "<br><br>Modelo: " + dirEquipos2[j][6] + "<br><br>Proveedor: " + dirEquipos2[j][7] + "<br><br>Recinto: " + dirEquipos2[j][3] + "<br><br>Fecha instalaci車n: " + dirEquipos2[j][9] + "<br><br>Caducidad Garantia: " + dirEquipos2[j][10] + "<br><br>Categoria: " + dirEquipos2[j][11] + "<br><br><IMG  SRC=../mod_instalacion/" + dirEquipos2[j][12] + " height='180px' width='180px' border='1.5px'><br><br>";
+                                            if(tipoUsuario == 2){
+                                                statsNode.innerHTML = "<p " + dirEquipos2[j][8] + ">Ficha Equipo ID: " + dirEquipos2[j][8] + "</a><br><br>Equipo: " + dirEquipos2[j][0] + "<br><br>Estado: " + dirEquipos2[j][1] + "<br><br>Instalacion: " + dirEquipos2[j][4] + "<br><br>Fabricante: " + dirEquipos2[j][5] + "<br><br>Modelo: " + dirEquipos2[j][6] + "<br><br>Proveedor: " + dirEquipos2[j][7] + "<br><br>Recinto: " + dirEquipos2[j][3] + "<br><br>Fecha instalaci車n: " + dirEquipos2[j][9] + "<br><br>Caducidad Garantia: " + dirEquipos2[j][10] + "<br><br>Categoria: " + dirEquipos2[j][11] + "<br><br><IMG  SRC=../mod_instalacion/" + dirEquipos2[j][12] + " height='180px' width='180px' border='1.5px'><br><br>";
+
+                                            }else{
+                                                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + dirEquipos2[j][8] + "' target='_blank'>Ficha Equipo ID: " + dirEquipos2[j][8] + "</a><br><br>Equipo: " + dirEquipos2[j][0] + "<br><br>Estado: " + dirEquipos2[j][1] + "<br><br>Instalacion: " + dirEquipos2[j][4] + "<br><br>Fabricante: " + dirEquipos2[j][5] + "<br><br>Modelo: " + dirEquipos2[j][6] + "<br><br>Proveedor: " + dirEquipos2[j][7] + "<br><br>Recinto: " + dirEquipos2[j][3] + "<br><br>Fecha instalaci車n: " + dirEquipos2[j][9] + "<br><br>Caducidad Garantia: " + dirEquipos2[j][10] + "<br><br>Categoria: " + dirEquipos2[j][11] + "<br><br><IMG  SRC=../mod_instalacion/" + dirEquipos2[j][12] + " height='180px' width='180px' border='1.5px'><br><br>";
+
+                                            }
 
                                         }
 
@@ -2021,7 +2031,6 @@ $tipousuario=$row123['tipousuario'];
                 }
 
                 function init() {
-
                     cameraPositionInitial();
 
                     newScene();
@@ -2165,7 +2174,13 @@ $tipousuario=$row123['tipousuario'];
                                      statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + target.name + "' target='_blank'>Ficha Equipo ID: " + target.name + "</a><br><br>Nombre: " + target.userData.equipo + "<br><br>Estado: " + target.userData.estadoequipo + "<br><br>Instalacion: " + target.userData.nombreinstalacion + "<br><br>Fabricante: " + target.userData.nombrefabricante + "<br><br>Modelo: " + target.userData.modelo + "<br><br>Proveedor: " + target.userData.nombreproveedor + "<br><br>Recinto: " + target.userData.recinto + "<br><br>Fecha de Instalacion: " + target.userData.fechainstalacion + "<br><br>Caducidad: " + target.userData.fechacaducidadgarantia + "<br><br>Categoria: " + target.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + target.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
                             }else if(hola=='EI'){
                         statsNode1.style.display = 'block';
-                                     statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + target.name + "' target='_blank'>Ficha Equipo ID: " + target.name + "</a><br><br>Nombre: " + target.userData.equipo + "<br><br>Estado: " + target.userData.estadoequipo + "<br><br>Instalacion: " + target.userData.nombreinstalacion + "<br><br>Fabricante: " + target.userData.nombrefabricante + "<br><br>Modelo: " + target.userData.modelo + "<br><br>Proveedor: " + target.userData.nombreproveedor + "<br><br>Recinto: " + target.userData.recinto + "<br><br>Fecha de Instalacion: " + target.userData.fechainstalacion + "<br><br>Caducidad: " + target.userData.fechacaducidadgarantia + "<br><br>Categoria: " + target.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + target.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                                if(tipoUsuario == 2){
+                                    statsNode.innerHTML = "<p " + target.name + ">Ficha Equipo ID: " + target.name + "</p><br><br>Nombre: " + target.userData.equipo + "<br><br>Estado: " + target.userData.estadoequipo + "<br><br>Instalacion: " + target.userData.nombreinstalacion + "<br><br>Fabricante: " + target.userData.nombrefabricante + "<br><br>Modelo: " + target.userData.modelo + "<br><br>Proveedor: " + target.userData.nombreproveedor + "<br><br>Recinto: " + target.userData.recinto + "<br><br>Fecha de Instalacion: " + target.userData.fechainstalacion + "<br><br>Caducidad: " + target.userData.fechacaducidadgarantia + "<br><br>Categoria: " + target.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + target.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+
+                                }else{
+                                    statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + target.name + "' target='_blank'>Ficha Equipo ID: " + target.name + "</a><br><br>Nombre: " + target.userData.equipo + "<br><br>Estado: " + target.userData.estadoequipo + "<br><br>Instalacion: " + target.userData.nombreinstalacion + "<br><br>Fabricante: " + target.userData.nombrefabricante + "<br><br>Modelo: " + target.userData.modelo + "<br><br>Proveedor: " + target.userData.nombreproveedor + "<br><br>Recinto: " + target.userData.recinto + "<br><br>Fecha de Instalacion: " + target.userData.fechainstalacion + "<br><br>Caducidad: " + target.userData.fechacaducidadgarantia + "<br><br>Categoria: " + target.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + target.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+
+                                }
                             }
 
                         if (event.which === 3) {
@@ -2208,7 +2223,8 @@ $tipousuario=$row123['tipousuario'];
 
 
                         }
-                    } else if (intercepcion2.length > 0 && event.which === 3) {
+                    }
+                    else if (intercepcion2.length > 0 && event.which === 3) {
 
                         statsNode1.style.display = 'none';
 //statsNode.innerHTML = "X: "+intercepcion2[0].point.x+" Y: "+intercepcion2[0].point.y+"Z: "+intercepcion2[0].point.z;
@@ -2251,20 +2267,31 @@ $tipousuario=$row123['tipousuario'];
             statsNode1.style.display = 'block';
                 var subidd=id.substr(0,2);
                 if(subidd=='CL'){
-                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
-                    } else if(subidd=='EM'){
-                    statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.nombreequipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.tipoequipo + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.numeromodelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_inventario/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
-                    }else if(subidd=='AS'){
-                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
-                    }else if(subidd=='AR'){
-                    statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.nombreequipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.tipoequipo + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.numeromodelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_servbas/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
-                    }if(subidd=='AL'){
-                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
-                    }if(subidd=='AP'){
-                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
-                    }if(subidd=='EI'){
+
                 statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
                     }
+                else if(subidd=='EM'){
+                    statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.nombreequipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.tipoequipo + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.numeromodelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_inventario/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                    }
+                else if(subidd=='AS'){
+                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                    }
+                else if(subidd=='AR'){
+                    statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.nombreequipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.tipoequipo + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.numeromodelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_servbas/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                    }
+                if(subidd=='AL'){
+                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                    }
+                if(subidd=='AP'){
+                statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                    }
+                if(subidd=='EI'){
+                    if(tipoUsuario == 2){
+                        statsNode.innerHTML = "<p" + buscado.name + ">Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                    }else{
+                        statsNode.innerHTML = "<a href='../fichas/ficha_equipos_instalaciones.php?id=" + buscado.name + "' target='_blank'>Ficha Equipo ID: " + buscado.name + "</a><br><br>Nombre: " + buscado.userData.equipo + "<br><br>Estado: " + buscado.userData.estadoequipo + "<br><br>Tipo: " + buscado.userData.nombreinstalacion + "<br><br>Fabricante: " + buscado.userData.nombrefabricante + "<br><br>Modelo: " + buscado.userData.modelo + "<br><br>Proveedor: " + buscado.userData.nombreproveedor + "<br><br>Sector: " + buscado.userData.recinto + "<br><br>Instalacion: " + buscado.userData.fechainstalacion + "<br><br>Caducidad: " + buscado.userData.fechacaducidadgarantia + "<br><br>Categoria: " + buscado.userData.acreditacion + "<br><br><IMG SRC=../mod_instalacion/" + buscado.userData.imagen + " height='180px' id='imagen1' width='180px' border='1.5px'><br><br>";
+                    }
+                }
 
                     vecCamera.x = -axisx + camera.position.x;
                     vecCamera.y = -axisy + camera.position.y;
