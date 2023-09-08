@@ -1,8 +1,5 @@
 <?php
-//$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
-//mysql_select_db("bimcl_cc", $enlace);
-
-$enlace = mysql_connect("localhost:3306","root","");
+$enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
 mysql_select_db("bimcl_cc", $enlace);
 
 $result = mysql_query("
