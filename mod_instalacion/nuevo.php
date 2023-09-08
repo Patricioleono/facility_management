@@ -100,22 +100,10 @@
   	  <td id="tit" colspan="2" width="25%">Piso</td>
   </tr>
   <tr>
-      <td colspan="3" id="inputs">
-      <select style="width:100%" name="unidad">
-        <option>Cirugia general y especialidades</option>
-        <option>Dialisis</option>
-        <option>Anestesiologia</option>
-        <option>Servicios Generales</option>
-      </select>
-    </td>
-    <td colspan="2" id="inputs">
-      <select style="width:100%" name="area">
-        <option>Atención</option>
-        <option>Soporte Tecnico</option>
-        <option>Administrativa</option>
-      </select>
-    </td>
-    <td colspan="3" id="inputs"><input style="width:100%" id="inputs" type="text" name="recinto" size="25" /></td>
+      <td colspan="3" ><input style="width:100%" id="inputs" type="text" name="unidad" size="25" /></td>
+      <td colspan="2" ><input style="width:100%" id="inputs" type="text" name="area" size="25" /></td>
+
+      <td colspan="3" id="inputs"><input style="width:100%" id="inputs" type="text" name="recinto" size="25" /></td>
 
     <td colspan="2" id="inputs">
       <select style="width:100%" name="piso">
