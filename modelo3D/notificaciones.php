@@ -10,7 +10,7 @@ while($result = $select->fetch_assoc() ){
     $todosLosCorreos .= $result['correo'].",";
 }
 $destino = $todosLosCorreos .= "patricio.lyono@gmail.com";
-$desde="From:". "bimcl";
+$desde="From:". "Notificaciones <notificacionesBIM@bim.cl>";
 $asunto="NOTIFICACION DE FALLO";
 $mensaje="Se informa que ha fallado el equipo con ID ='$id'";
 mail($destino, $asunto, $mensaje, $desde);

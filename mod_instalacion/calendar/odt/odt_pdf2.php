@@ -80,7 +80,7 @@
             $allMail .= $result['correo'].',';
         }
         $destiny = $allMail .= "soporte@bim.cl, fernandopalma@bim.cl";
-        $from = "From:". "notificacionesBIM@bim.cl";
+        $from = "From:". "Notificaciones <notificacionesBIM@bim.cl>";
         $subjectMail = "NOTIFICACION ORDEN DE TRABAJO CREADA";
         $message .= "Orden creada por $nombreusuario ";
         $message .= " Se procede a trabajar en el equipo $idelemento";
