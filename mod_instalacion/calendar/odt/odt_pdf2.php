@@ -32,8 +32,8 @@
 		$resultado1234=$con->query($query1234);
 
 
-		$query2="INSERT INTO archivos_equipos (idelem, nombre, ext, ruta) VALUES ('$idelemento','$valor2','$ext','$dir2')";
-		$resultado3=$mysqli->query($query2);
+		//$query2="INSERT INTO archivos_equipos (idelem, nombre, ext, ruta) VALUES ('$idelemento','$valor2','$ext','$dir2')";
+		//$resultado3=$mysqli->query($query2);
 		if (file_exists($dir0."/".$idelemento)){
 
 		}else {
