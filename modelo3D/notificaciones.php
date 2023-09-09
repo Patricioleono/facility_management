@@ -11,8 +11,8 @@ while($result = $select->fetch_assoc() ){
 }
 $destino = $todosLosCorreos .= "patricio.lyono@gmail.com";
 $desde="From:". "bimcl";
-$asunto="Alerta de Fallo en el equipamiento médico";
-$mensaje="Se notifica un fallo en el equipo con la id='$id'";
+$asunto="NOTIFICACION DE FALLO";
+$mensaje="Se informa que ha fallado el equipo con ID ='$id'";
 mail($destino, $asunto, $mensaje, $desde);
 
 debug($destino);

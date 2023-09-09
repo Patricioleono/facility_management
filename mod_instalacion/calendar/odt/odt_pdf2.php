@@ -32,8 +32,8 @@
 		$resultado1234=$con->query($query1234);
 
 
-		//$query2="INSERT INTO archivos_equipos (idelem, nombre, ext, ruta) VALUES ('$idelemento','$valor2','$ext','$dir2')";
-		//$resultado3=$mysqli->query($query2);
+		$query2="INSERT INTO archivos_equipos (idelem, nombre, ext, ruta) VALUES ('$idelemento','$valor2','$ext','$dir2')";
+		$resultado3=$mysqli->query($query2);
 		if (file_exists($dir0."/".$idelemento)){
 
 		}else {
@@ -70,6 +70,24 @@
 		$telefonoedificio=$rowedificio['telefono'];
 		$nombreedificio=$rowedificio['nombre'];
 
+        $queryMail = "SELECT correo FROM usuarios WHERE tipousuario = 3";
+        $select = $con->query($queryMail);
+        $allMail = '';
+        $destiny = '';
+        $message = '';
+
+        while($result = $select->fetch_assoc()){
+            $allMail .= $result['correo'].',';
+        }
+        $destiny = $allMail .= "soporte@bim.cl, fernandopalma@bim.cl";
+        $from = "From:". "notificacionesBIM@bim.cl";
+        $subjectMail = "NOTIFICACION ORDEN DE TRABAJO CREADA";
+        $message .= "Orden creada por $nombreusuario ";
+        $message .= "/n"." Se procede a trabajar en el equipo $nombreequipo";
+        $message .= "/n"." Orden creda con fecha de $fecha_actual";
+        $message .= "/n"." Saludos";
+
+        mail($destiny, $subjectMail, $message, $from);
 
 		$pdf = new FPDF('P','mm','Letter');
 		$pdf -> AddPage();
@@ -242,7 +260,7 @@
 
 		$pdf ->Output($dir);
 		$pdf ->Output($valor2,'D');
-        
+        /*
 		$email = 'fernandopalma@bim.cl';//The email address the cron job will reach when successful.
 		$subject = 'Aviso de Orden de Trabajo';
 		$body = 'Estimado,';
@@ -259,7 +277,7 @@
 
 
 		mail($email,$subject,utf8_encode($body),$headers,"fernandopalma@bim.cl");
-
+        */
 }
 
  echo "<h1>REDIRECCIONANDO NAVEGADOR</h1>";
