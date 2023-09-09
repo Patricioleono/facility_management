@@ -83,9 +83,9 @@
         $from = "From:". "notificacionesBIM@bim.cl";
         $subjectMail = "NOTIFICACION ORDEN DE TRABAJO CREADA";
         $message .= "Orden creada por $nombreusuario ";
-        $message .= "/n"." Se procede a trabajar en el equipo $nombreequipo";
-        $message .= "/n"." Orden creda con fecha de $fecha_actual";
-        $message .= "/n"." Saludos";
+        $message .= " Se procede a trabajar en el equipo $idelemento";
+        $message .= " Orden creda con fecha de $fecha_actual";
+        $message .= " Saludos";
 
         mail($destiny, $subjectMail, $message, $from);
 
