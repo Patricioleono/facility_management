@@ -155,7 +155,7 @@ echo number_format($total); ?>.-
 </tr>
 
 <tr>
-<form method="POST" action="elemento.php">
+<form method="POST" action="../fichas/ficha_equipos_instalaciones.php?id=<?php echo $id ;?>">
     <input type="hidden" name="id" value="<?php echo $id ;?>" />
     <td align="center" colspan=2><button type="button" style="width:30%;" class="button2" value="Enviar" title="Ver" onclick="form.submit()">Ficha Equipo</button></td>
 </form>
