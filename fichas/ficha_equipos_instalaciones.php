@@ -192,10 +192,10 @@
         <option>MALO</option>
       </select>
     </td>
-    <td><input style="width:auto;" class="button2" type="submit" name="enviar" value="Enviar" /></td>
+    <td><input style="width:auto;" class="button2" type="submit" name="enviar" value="Cambiar Estado" /></td>
     </center>
     <td>
-<center><input type="button" style="width:auto;" class="button2" value="Inicio" name="Regresar" onclick="location.href='http://www.bim.cl/BIM/QA/logeado.php'" /></center>
+<center><input type="button" style="width:auto;" class="button2" value="Regresar al Modelo 3D" name="Regresar" onclick="location.href='http://desarrollo.bim.cl/modelo3D/chch.php'" /></center>
 </td>
 </form>
 </tr>

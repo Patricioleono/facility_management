@@ -6,6 +6,9 @@
 	}else{
 	$id=$_POST['id'];
 	}
+    $equiposInstalaciones = "../fichas/ficha_equipos_instalaciones.php?id=$id";
+    $equiposMedicos = '../fichas/ficha_equipos_medicos.php?id='.$id;
+    $equiposArtefactos = '../fichas/ficha_artefactos.php?id='.$id;
 
 $query="SELECT * 
 FROM gastos_instalaciones
@@ -111,11 +114,55 @@ $var='0';
         </tr>
       </table>  
 
-        <center><input style="width:auto" class="button2" type="submit" name="enviar" value="Registrar" /></center>
-        
+        <center><input style="width:auto" class="button2" type="submit" name="enviar" value="Registrar" />
+        <?php
+            $idUnica = substr($id, 0, 2);
+            if($idUnica == 'EI'){
+                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaEI()"/></center>';
+            }else if($idUnica == 'AP'){
+                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAP()"/></center>';
+            }else if($idUnica == 'AL'){
+                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAL()"/></center>';
+            }else if($idUnica == 'AR'){
+                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAR()"/></center>';
+            }else if($idUnica == 'AS'){
+                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAS()"/></center>';
+            }else if($idUnica == 'EM'){
+                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaEM()"/></center>';
+            }else{
+                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaCL()"/></center>';
+            }
+        ?>
+
+
 
       
     </form> 
     <?php } ?>
+<script>
+    var idUnica = '<?=$id?>';
+
+    function regresarFichaEI(){
+        location.href = '../fichas/ficha_equipos_instalaciones.php?id='+idUnica
+    }
+    function regresarFichaAP(){
+        location.href = '../fichas/ficha_equipos_instalaciones.php?id='+idUnica
+    }
+    function regresarFichaAL(){
+        location.href = '../fichas/ficha_equipos_instalaciones.php?id='+idUnica
+    }
+    function regresarFichaAR(){
+        location.href = '../fichas/ficha_artefactos.php?id='+idUnica
+    }
+    function regresarFichaAS(){
+        location.href = '../fichas/ficha_equipos_instalaciones.php?id='+idUnica
+    }
+    function regresarFichaEM(){
+        location.href = '../fichas/ficha_equipos_medicos.php?id='+idUnica
+    }
+    function regresarFichaCL(){
+        location.href = '../fichas/ficha_equipos_medicos.php?id='+idUnica
+    }
+</script>
 </body>
 </html>

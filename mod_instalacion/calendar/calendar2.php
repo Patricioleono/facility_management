@@ -236,8 +236,9 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
 <form method="POST" action="../elemento2.php">
         <input type="hidden" name="id" value="<?php echo $row3['idequipo'] ;?>" />
         <button type="button" class="button2" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;" value="Enviar" title="Ver" onclick="form.submit()">Ficha Instalacion</button>
-    </form>
-   </div>
+        <input type="button" class="button2" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;" value="Regresar al Modelo 3D" name="Regresar" onclick="location.href='http://desarrollo.bim.cl/modelo3D/chch.php'" />
+</form>
+</div>
 
 </body>
 </html>
