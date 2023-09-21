@@ -38,7 +38,7 @@
 	$distanciapiso=$_POST['distanciapiso'];
 	$peso=$_POST['peso'];
 
-	$enlace='http://www.bim.cl/BIM/QA/fichas/ficha_equipos_instalaciones.php?id='.$idunica;
+	$enlace='http://desarrollo.bim.cl/fichas/ficha_equipos_instalaciones.php?id='.$idunica;
 
 	
 	$query="INSERT INTO instalaciones(`idunica`, `nombreinstalacion`, `sistema`, `equipo`, `marca`, `modelo`, `codigo`, `potencia`, `unidadpotencia`, `nombrefabricante`, `versionsoftware`, `nombreproveedor`, `codigoproveedor`, `unidad`, `area`, `recinto`, `piso`, `preciocompra`, `fechainstalacion`, `fechacaducidadgarantia`, `responsablemantenimiento`, `estadoequipo`, `acreditacion`, `alto`, `largo`, `ancho`, `distanciaalpiso`, `peso`, `enlace`)  VALUES ('$idunica','$nombreinstalacion','$sistema','$equipo','$marca','$modelo','$codigo','$potencia','$unidadpotencia','$nombrefabricante','$versionsoftware','$nombreproveedor','$codigoproveedor','$unidad','$area','$recinto','$piso','$preciocompra','$fechainstalacion','$fechacaducidadgarantia','$responsablemantenimiento','$estadoequipo','$acreditacion','$alto','$largo','$ancho','$distanciapiso','$peso','$enlace');";

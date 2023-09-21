@@ -21,11 +21,11 @@
     
     </style>
   
-		<title>Modulo de Instalaciones</title>
+		<title>Ficha de Equipol</title>
 	</head>
 	<body>
 		
-		<center><h1>Modulo de Instalaciones</h1></center>
+		<center><h1>Ficha de Equipo</h1></center>
 		 	<?php
       echo
       '
