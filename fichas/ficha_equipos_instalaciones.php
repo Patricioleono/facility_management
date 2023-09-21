@@ -162,7 +162,7 @@
 </form>
 </td>  
 <td>
-<form method="POST" action="../mod_instalacion/gastos.php">
+<form method="POST" action="../mod_instalacion/historialequipo.php">
  	    		<input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
     			<button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Finanzas" onclick="form.submit()"><img width="20px" height="20px" src="images/dolar.png"></button>
     		</form>

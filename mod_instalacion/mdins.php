@@ -102,7 +102,7 @@ $(document).ready(function() {
       </center></td>
 
       <td width="25px"><center>
-        <form method="POST" action="gastos.php">
+        <form method="POST" action="historialequipo.php">
           <input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
           <button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Finanzas" onclick="form.submit()"><img width="20px" height="20px" src="images/dolar.png"></button>
         </form>
