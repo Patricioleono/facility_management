@@ -6,6 +6,9 @@
 	}else{
 	$id=$_POST['id'];
 	}
+    $equiposInstalaciones = "../fichas/ficha_equipos_instalaciones.php?id=$id";
+    $equiposMedicos = '../fichas/ficha_equipos_medicos.php?id='.$id;
+    $equiposArtefactos = '../fichas/ficha_artefactos.php?id='.$id;
 
 $query="SELECT * 
 FROM gastos_instalaciones
