@@ -17,7 +17,7 @@ $pdf -> Ln(15);//Salto de linea
 
 $pdf -> SetFont('Arial','B',18); // B es negrita (Bold)
 $pdf -> Cell(70,8,'',0);
-$pdf -> Cell(100,8,'Ficha Producto',0);
+$pdf -> Cell(100,8,'Ficha Equipo',0);
 $pdf -> Ln(8);
 $pdf -> Ln(15);
 

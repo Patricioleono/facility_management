@@ -98,7 +98,7 @@ $(document).ready(function() {
           <input type="file" name="archivo_fls" />
           <br><br>
           <input type="button" class="button2" name="subir_btn" onclick="form.submit()" value="Subir Archivo">
-          <input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="location.href='../fichas/ficha_equipos_instalaciones.php?id=<?php echo $id ;?>'" />
+          <input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="location.href='../fichas/ficha_equipos_instalaciones.php?id=<?php echo $id ;?>'" />
    </FORM>
 <?php } ?>
 </center>
