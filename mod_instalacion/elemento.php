@@ -29,7 +29,7 @@
 		 	<?php
       echo
       '
-      <p><center><IMG  SRC="'.($row["imagen"]).'" height="180px" width="180px" border="1.5px" ></center></p>
+      <p><center><IMG  SRC="elementos/'.($row["imagen"]).'" height="180px" width="180px" border="1.5px" ></center></p>
       ' 
        ?>
 

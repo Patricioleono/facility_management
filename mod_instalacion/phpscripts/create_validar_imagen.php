@@ -10,10 +10,10 @@ opendir($dir);
 			$ext = substr($_FILES['archivo']['name'], strrpos($_FILES['archivo']['name'], '.'));
 			$valor = $nom.$ext;
 			if($ext=='.jpg'){
-			move_uploaded_file($_FILES['archivo']['tmp_name'], $dir."/".$nom."/".$valor);
+			move_uploaded_file($_FILES['archivo']['tmp_name'], $dir."/".$valor);
 		
 			
-			$imagena = $nom."/".$valor;
+			$imagena = $valor;
 			$query2="UPDATE instalaciones SET imagen='$imagena' WHERE idunica='$nom'";
             $resultado3=$mysqli->query($query2);
 			}
