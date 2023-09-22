@@ -6,14 +6,14 @@ $fecha=strftime( "%d-%m-%Y", time() );
 ?>
 <html>
 	<head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-		<title>Mantenimientos Pendientes</title>
+		<title>Listado de Tareas</title>
 	<style type="text/css">
 		@import "../css/fondo.css";
 	</style>
 <link rel="stylesheet" href="../css/css_mdi.css">
 	</head>
 	<body>		
-		<center><h1>Mantenimientos Pendientes</h1></center>
+		<center><h1>Listado de Tareas</h1></center>
 			<table width="auto" style="margin: 0 auto;">
 			<th>Fecha Actual: </th>
 			<th><?php echo $fecha ?></th>
