@@ -233,11 +233,11 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
 
 </div> -->
 <div id="return">
-<form method="POST" action="../elemento.php">
+<form method="GET" action="../../fichas/ficha_equipos_instalaciones.php">
         <input type="hidden" name="id" value="<?php echo $row3['idequipo'] ;?>" />
         <button type="button" class="button2" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;" value="Enviar" title="Ver" onclick="form.submit()">Ficha Instalacion</button>
     </form>
    </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
 </body>
 </html>
