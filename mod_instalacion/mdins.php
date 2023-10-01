@@ -147,7 +147,11 @@ $(document).ready(function() {
 <center><button type="button" class="button2" onclick="form.submit()"> Insertar Nuevo </button></center>
 
 </form>
+<form action="../carga_documentos/cargaMasivaFicha.php">
 
+    <center><button type="button" class="button2" onclick="form.submit()"> Carga Masiva de Fichas </button></center>
+
+</form>
 <?php } ?>
 </body>
 </html>
