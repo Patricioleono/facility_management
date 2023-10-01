@@ -1,4 +1,7 @@
 <?php
+/*
+$enlace = mysql_connect("localhost:3306","root","");
+mysql_select_db("hospital", $enlace); */
 $enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
 mysql_select_db("bimcl_cc", $enlace);
 
@@ -91,6 +94,7 @@ document.oncontextmenu = function(){return false}
                <li><button type="button" class="accordion-content" onclick="window.open('mod_estructura/estructura.php','centro');" value="Estructura" name="Estructura" > Estructura </button></li>
                <li><button type="button" class="accordion-content" onclick="window.open('mod_instalacion/mdins.php?tipo=<?php echo $tipousuario ?>','centro');" value="Instalaciones" name="Instalaciones" > Especialidades </button></li>
                <li><button type="button" class="accordion-content" onclick="window.open('mod_inventario/mdi.php','centro');" value="Gestión de Equipos Médicos" name="Gestión de Equipos Médicos">Equipos Médicos </button></li>
+               <li><button type="button" class="accordion-content" onclick="window.open('cargaArchivos.php','centro');" value="Carga Archivos" name="Carga Archivos">Carga Archivos </button></li>
            </ul>
        </li>
       <li>
