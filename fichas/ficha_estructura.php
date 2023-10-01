@@ -38,7 +38,7 @@
 		 	<?php
       echo
       '
-      <p><center><IMG  SRC="estructuras/'.($row["imagen"]).'" height="180px" width="180px" border="1.5px" ></center></p>
+      <p><center><IMG  SRC="../mod_estructura/elementos/'.($row["imagen"]).'" height="180px" width="180px" border="1.5px" ></center></p>
       ' 
        ?>
 		<table style="width:80%;  margin:auto;" cellspacing="10px">

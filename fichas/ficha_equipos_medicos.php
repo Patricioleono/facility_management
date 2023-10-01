@@ -41,7 +41,7 @@
 <?php
       echo
       '
-<tr><td><IMG  SRC="../mod_inventario/'.($row["imagen"]).'" height="180px" width="180px" border="1.5px"></td></tr></table></td>
+<tr><td><IMG  SRC="../mod_inventario/elementos/'.($row["imagen"]).'" height="180px" width="180px" border="1.5px"></td></tr></table></td>
 ' 
        ?>
 <td colspan="11">
