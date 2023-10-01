@@ -17,7 +17,7 @@ opendir($dir);
       }
       else
       {
-       
+          echo "<script>alert('El archivo debe tener uno de los siguientes formatos: jpg, jpeg, img, png')</script>";
       }
 	}
 			

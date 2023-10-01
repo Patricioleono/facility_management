@@ -1,0 +1,17 @@
+{
+    "name": "desarrollo/facility_management",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Desarrollo\\FacilityManagement\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Patricio Leon Ormazabal",
+            "email": "patricio.lyono@gmail.com"
+        }
+    ]
+}
