@@ -6,9 +6,6 @@
 	}else{
 	$id=$_POST['id'];
 	}
-    $equiposInstalaciones = "../fichas/ficha_equipos_instalaciones.php?id=$id";
-    $equiposMedicos = '../fichas/ficha_equipos_medicos.php?id='.$id;
-    $equiposArtefactos = '../fichas/ficha_artefactos.php?id='.$id;
 
 $query="SELECT * 
 FROM gastos_instalaciones
@@ -118,19 +115,19 @@ $var='0';
         <?php
             $idUnica = substr($id, 0, 2);
             if($idUnica == 'EI'){
-                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaEI()"/></center>';
+                echo '<input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="regresarFichaEI()"/></center>';
             }else if($idUnica == 'AP'){
-                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAP()"/></center>';
+                echo '<input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="regresarFichaAP()"/></center>';
             }else if($idUnica == 'AL'){
-                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAL()"/></center>';
+                echo '<input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="regresarFichaAL()"/></center>';
             }else if($idUnica == 'AR'){
-                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAR()"/></center>';
+                echo '<input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="regresarFichaAR()"/></center>';
             }else if($idUnica == 'AS'){
-                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaAS()"/></center>';
+                echo '<input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="regresarFichaAS()"/></center>';
             }else if($idUnica == 'EM'){
-                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaEM()"/></center>';
+                echo '<input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="regresarFichaEM()"/></center>';
             }else{
-                echo '<input type="button" class="button2" value="Regresar a la Ficha" name="Regresar" onclick="regresarFichaCL()"/></center>';
+                echo '<input type="button" class="button2" value="Ficha Equipo" name="Regresar" onclick="regresarFichaCL()"/></center>';
             }
         ?>
 
