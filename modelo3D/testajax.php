@@ -150,13 +150,13 @@ $i = $i + 1;
 }
 else if($prueba=='EI'){
     if(!empty($_POST['estado'])){
-        $estado = $_POST['estado'];
+        $estado = strtoupper($_POST['estado']);
         $query1="SELECT * FROM instalaciones WHERE idunica='$nombre_fichero' AND estadoequipo ='$estado'";
         $resultado1=$mysqli->query($query1);
         $row1=$resultado1->fetch_assoc();
         if(substr($row1['nombreinstalacion'], 0, 2) == $prueba){
             $array[$i][0]=utf8_encode($row1['equipo']);
-            $array[$i][1]=utf8_encode($row1['estadoequipo']);
+            $array[$i][1]=utf8_encode(strtoupper($row1['estadoequipo']));
             $array[$i][2]=utf8_encode($row1['piso']);
             $array[$i][3]=utf8_encode($row1['recinto']);
             $array[$i][4]=utf8_encode($row1['nombreinstalacion']);
