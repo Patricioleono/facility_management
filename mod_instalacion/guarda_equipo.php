@@ -1,7 +1,7 @@
 <?php require('../phpscript/logigin.php'); ?>
 <?php require('phpscripts/req_guarda_equipo.php'); ?>
 <?php require('phpscripts/create_folder_guarda_equipo.php'); ?>
-<?php header( "refresh:3;url=mdins.php" ); ?>
+<?php header( "refresh:1;url=mdins.php" ); ?>
 
 
 <html>

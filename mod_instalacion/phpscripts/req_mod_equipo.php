@@ -44,5 +44,4 @@
 	  //No nombrar 2 veces la tabla en una sola consulta
 	//echo $query;
 	$resultado=$mysqli->query($query);
-	echo $resultado;
 ?>

@@ -1,9 +1,6 @@
 <?php
 $dir= 'elementos';
-if(isset($_POST['Guardar'])){ 
-opendir($dir); 
-     
- }
+
 
  if(isset($_POST['Guardar'])){
 			$nom = $_POST['id'];
