@@ -7,9 +7,9 @@ opendir($dir);
 
  if(isset($_POST['Guardar'])){
 			$nom = $_POST['id'];
-			$ext = substr($_FILES['archivo']['name'], strrpos($_FILES['archivo']['name'], '.'));
+			$ext = strtolower(substr($_FILES['archivo']['name'], strrpos($_FILES['archivo']['name'], '.')));
 			$valor = $nom.$ext;
-			if($ext=='.jpg'){
+			if($ext=='.jpg' || $ext =='.jpeg'){
 			move_uploaded_file($_FILES['archivo']['tmp_name'], $dir."/".$valor);
 			$imagena = $valor;
 			$query2="UPDATE equipos SET imagen='$imagena' WHERE idunica='$nom'";
