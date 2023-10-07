@@ -233,9 +233,10 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
 
 </div> -->
 <div id="return">
-<form method="POST" action="../elemento2.php">
+<form method="POST" action="../elemento.php">
         <input type="hidden" name="id" value="<?php echo $row3['idequipo'] ;?>" />
-        <button type="button" class="button2" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;" value="Enviar" title="Ver" onclick="form.submit()">Ficha Instalacion</button>
+    <button type="button" class="button2" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;" value="Enviar" title="Ver" onclick="form.submit()">Ficha Instalacion</button>
+    <input type="button" class="button2" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;" value="Ficha Equipo" name="Regresar" onclick="location.href='../../fichas/ficha_equipos_medicos.php?id=<?php echo $row3['idequipo'] ;?>'" />
     </form>
    </div>
 

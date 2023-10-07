@@ -6,12 +6,7 @@
 		<meta charset="utf-8">
 
 		<link rel="stylesheet" type="text/css" href="css/css_mdi.css" />
-		<script>
-		document.addEventListener('copy', function(e){
-  			e.clipboardData.setData('text/plain','http://www.bim.cl/hospital_LuisCalvoMackena/fichas/ficha_equipos_medicos.php?id='+<?php echo''.$row['idunica'].''; ?>);
-  			e.preventDefault();
-  		});
-		</script>
+
           <style>
     #inputs{
       width: '100%';

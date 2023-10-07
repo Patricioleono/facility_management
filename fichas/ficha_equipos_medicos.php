@@ -8,7 +8,6 @@
   $resultado=$mysqli->query($query);
   $row=$resultado->fetch_assoc();
 ?>
-<?php require('../phpscript/logigin.php'); ?>
 
 <html>
 	<head>
@@ -144,14 +143,14 @@
 <center>
 <tr>
 <td>
-<form method="POST" action="../mod_inventario/calendar/calendar.php">
+<form method="POST" action="../mod_inventario/calendar/calendar2.php">
  	    		<input type="hidden" name="id" value="<?php echo $row['id'] ;?>" />
     			<button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Calendario" onclick="form.submit()"><img width="20px" height="20px" src="images/calendar.png"></button>
   		
 </form>
 </td>  
 <td>
-<form method="POST" action="../mod_inventario/gastos.php">
+<form method="POST" action="../mod_inventario/historialequipo.php">
  	    		<input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
     			<button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Finanzas" onclick="form.submit()"><img width="20px" height="20px" src="images/dolar.png"></button>
     		</form>
@@ -181,10 +180,10 @@
         <option>MALO</option>
       </select>
     </td>
-    <td><input style="width:auto;" class="button2" type="submit" name="enviar" value="Enviar" /></td>
+    <td><input style="width:auto;" class="button2" type="submit" name="enviar" value="Cambiar Estado" /></td>
     </center>
     <td>
-<center><input type="button" style="width:auto;" class="button2" value="Inicio" name="Regresar" onclick="location.href='http://www.bim.cl/BIM/QA/index.php'" /></center>
+        <center><input type="button" style="width:auto;" class="button2" value="Regresar al Modelo 3D" name="Regresar" onclick="location.href='http://desarrollo.bim.cl/modelo3D/chch.php'" /></center>
 </td>
 </form>
 </tr>

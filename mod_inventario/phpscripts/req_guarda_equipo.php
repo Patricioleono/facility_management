@@ -25,11 +25,12 @@
 	$largo=$_POST['largo'];
 	$ancho=$_POST['ancho'];
 	$distanciaalpiso=$_POST['distanciaalpiso'];
-        $enlace='http://www.bim.cl/BIM/QA/fichas/ficha_equipos_medicos.php?id='.$idunica;
+        $enlace='http://desarrollo.bim.cl/fichas/ficha_equipos_medicos.php?id='.$idunica;
 	
-	$query="INSERT INTO equipos (idunica,nombreequipo, tipoequipo, nombrefabricante, numeromodelo, numeroserie, versionsoftware, nombreproveedor, codigoproveedor, unidad, area, recinto, piso, preciocompra, fechainstalacion, fechacaducidadgarantia, responsablemantenimiento, estadoequipo, acreditacion,alto,largo,
-		ancho, distanciaalpiso, enlace) 
-	VALUES ('$nombreequipo','$idunica','$tipoequipo','$nombrefabricante','$numeromodelo','$numeroserie','$versionsoftware','$nombreproveedor',
+	$query="INSERT INTO equipos (idunica,nombreequipo, tipoequipo, nombrefabricante, numeromodelo, numeroserie, versionsoftware, nombreproveedor,
+                     codigoproveedor, unidad, area, recinto, piso, preciocompra, fechainstalacion, fechacaducidadgarantia, responsablemantenimiento, 
+                     estadoequipo, acreditacion,alto,largo, ancho, distanciaalpiso, enlace) 
+	VALUES ('$idunica','$nombreequipo','$tipoequipo','$nombrefabricante','$numeromodelo','$numeroserie','$versionsoftware','$nombreproveedor',
 		'$codigoproveedor','$unidad','$area', '$recinto','$piso','$preciocompra','$fechainstalacion','$fechacaducidadgarantia',
 		'$responsablemantenimiento','$estadoequipo','$acreditacion','$alto','$largo','$ancho','$distanciaalpiso','$enlace')";
     $query1="INSERT INTO eventcalender(idequipo) VALUES ('$idunica');";
