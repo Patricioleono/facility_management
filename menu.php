@@ -73,7 +73,7 @@ document.oncontextmenu = function(){return false}
 </script>
 
   <ul id="accordion" class="accordion">
-   <?php if($rol == 1){ ?>
+   <?php if($rol == 1 || $rol == 5){ ?>
        <li>
            <div class="link"><i class="icon-folder-open"></i> Administración <i class="icon-down-open"></i></div>
            <ul class="submenu">
