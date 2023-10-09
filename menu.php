@@ -95,8 +95,11 @@ document.oncontextmenu = function(){return false}
                <li><button type="button" class="accordion-content" onclick="window.open('mod_estructura/estructura.php','centro');" value="Estructura" name="Estructura" > Estructura </button></li>
                <li><button type="button" class="accordion-content" onclick="window.open('mod_instalacion/mdins.php?tipo=<?php echo $tipousuario ?>','centro');" value="Instalaciones" name="Instalaciones" > Especialidades </button></li>
                <li><button type="button" class="accordion-content" onclick="window.open('mod_inventario/mdi.php','centro');" value="Gestión de Equipos Médicos" name="Gestión de Equipos Médicos">Equipos Médicos </button></li>
+              <?php if($rol == 5){ ?>
                <li><button type="button" class="accordion-content" onclick="window.open('cargaArchivos.php','centro');" value="Carga Archivos" name="Carga Archivos">Carga Archivos </button></li>
                <li><button type="button" class="accordion-content" onclick="window.open('codigoQR/index.php','centro');" value="Crear Codigo QR" name="Crear Codigo QR">Crear Codigo QR</button></li>
+               <?php }else{ } ?>
+
            </ul>
        </li>
       <li>
