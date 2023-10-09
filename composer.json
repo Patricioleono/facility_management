@@ -1,7 +1,8 @@
 {
     "name": "desarrollo/facility_management",
     "require": {
-        "phpoffice/phpspreadsheet": "^1.8"
+        "phpoffice/phpspreadsheet": "^1.8",
+        "endroid/qr-code": "^2.5"
     },
     "autoload": {
         "psr-4": {
