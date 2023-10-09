@@ -1,5 +1,4 @@
 <?php
-ob_start();
 require_once '../conexion.php';
 require_once '../vendor/autoload.php';
 require '../fpdf/fpdf.php';
