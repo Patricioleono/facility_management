@@ -1,7 +1,8 @@
 <?php
 require_once '../conexion.php';
 require_once '../vendor/autoload.php';
-require '../fpdf/fpdf.php';
+require_once '../vendor/dompdf/autoload.inc.php';
+use Dompdf\Dompdf;
 use Endroid\QrCode\QrCode;
 $query="SELECT idunica FROM instalaciones";
 $resultado=$mysqli->query($query);
@@ -19,6 +20,7 @@ foreach($iterator as $entry) {
     $dataFolder[] = $entry->getFilename();
 }
 
+ob_start();
 ?>
 
 
@@ -43,7 +45,6 @@ foreach($iterator as $entry) {
     <tr>
         <th>Nombre Equipo</th>
         <th>Codigo QR Equipo</th>
-        <th>Crear PDF</th>
     </tr>
     </thead>
     <tbody>
@@ -58,4 +59,18 @@ foreach($iterator as $entry) {
 
 </body>
 </html>
+<?php
+$html = ob_get_clean();
+$dompdf = new Dompdf();
+
+$options = $dompdf->getOptions();
+$options->set(array('isRemoteEnabled' => true));
+$dompdf->setOptions($options);
+
+$dompdf->loadHtml($html);
+$dompdf->setPaper('letter');
+
+$dompdf->render();
+$dompdf->stream("TotalQr.pdf", array("Attachment" => true));
+?>
 
