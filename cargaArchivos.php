@@ -29,7 +29,13 @@
 <form style="margin-top: 30px" action="carga_documentos/cargaMasivaStl.php" method="POST" enctype="multipart/form-data">
     <center style="margin: 12px">Carga Estructuras Bases</center>
     <center><input type="file" name="archivo[]" multiple></center>
-    <center><input style="width:auto; margin-top: 10px" type="submit" class="button2" name="Confirmar" value="Subir Documento" /></center>
+    <center><input style="width:auto; margin-top: 10px" type="submit" class="button2" name="Confirmar" value="Subir Archivo" /></center>
+</form>
+
+<form style="margin-top: 30px" action="carga_documentos/procesarDocumentoCalendario.php" method="POST" enctype="multipart/form-data">
+    <center style="margin: 12px">Carga Masiva Calendario</center>
+    <center><input type="file" name="calendario" multiple></center>
+    <center><input style="width:auto; margin-top: 10px" type="submit" class="button2" name="Confirmar" value="Subir Archivo" /></center>
 
 </form>
 
