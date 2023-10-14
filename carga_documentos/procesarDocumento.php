@@ -3,6 +3,8 @@ require "../conexion2.php";
 require "../vendor/autoload.php";
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+
 
 $rutaArchivoCargado = $_FILES['archivo']['tmp_name'];
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($rutaArchivoCargado);
@@ -34,8 +36,8 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                     ,$dataFichaMasiva->getCell("P1")->getValue() => $dataFichaMasiva->getCell("P$row")->getValue()
                     ,$dataFichaMasiva->getCell("Q1")->getValue() => $dataFichaMasiva->getCell("Q$row")->getValue()
                     ,$dataFichaMasiva->getCell("R1")->getValue() => $dataFichaMasiva->getCell("R$row")->getValue()
-                    ,$dataFichaMasiva->getCell("S1")->getValue() => $dataFichaMasiva->getCell("S$row")->getValue()
-                    ,$dataFichaMasiva->getCell("T1")->getValue() => $dataFichaMasiva->getCell("T$row")->getValue()
+                    ,$dataFichaMasiva->getCell("S1")->getValue() => date( "Y-m-d", Date::excelToTimestamp($dataFichaMasiva->getCell("S$row")->getValue()))
+                    ,$dataFichaMasiva->getCell("T1")->getValue() => date( "Y-m-d", Date::excelToTimestamp($dataFichaMasiva->getCell("T$row")->getValue()))
                     ,$dataFichaMasiva->getCell("U1")->getValue() => $dataFichaMasiva->getCell("U$row")->getValue()
                     ,$dataFichaMasiva->getCell("V1")->getValue() => $dataFichaMasiva->getCell("V$row")->getValue()
                     ,$dataFichaMasiva->getCell("W1")->getValue() => $dataFichaMasiva->getCell("W$row")->getValue()
