@@ -133,6 +133,30 @@ $(document).ready(function() {
       </center></td> 
             
       <?php } ?>
+      <?php if ($tipousuario == 6){?>
+          <td width="25px"><center>
+                  <form method="GET" action="../fichas/ficha_equipos_instalaciones.php">
+                      <input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
+                      <button type="button" class="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Ver" onclick="form.submit()"><img width="20px" height="20px"  src="images/lupa.png"></button>
+                  </form>
+              </center>
+          </td>
+          <td width="25px"><center>
+                  <form method="POST" action="modificar.php">
+                      <input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
+                      <button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Editar" onclick="form.submit()"><img width="20px" height="20px" src="images/editar.png"></button>
+                  </form>
+              </center>
+          </td>
+          <td width="25px"><center>
+                  <form method="POST" action="archivos.php">
+                      <input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
+                      <button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Documentos" onclick="form.submit()"><img width="20px" height="20px" src="images/folder.png"></button>
+                  </form>
+              </center>
+          </td>
+      <?php }?>
+
 
  	  </tr>
   <?php }

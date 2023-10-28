@@ -228,6 +228,15 @@
 
     </tbody>
 <?php }?>
+    <?php if($rolUsuario == 6){ ?>
+    <td>
+        <form method="POST" action="../mod_instalacion/archivos.php">
+            <input type="hidden" name="id" value="<?php echo $row['idunica'] ;?>" />
+            <button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Documentos" onclick="form.submit()"><img width="20px" height="20px" src="images/folder.png"></button>
+        </form>
+    </td>
+    <td>
+    <?php } ?>
 
 
 </table>
