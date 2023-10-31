@@ -1,8 +1,8 @@
 <?php 
 	$hostname = "localhost:3306";
-	$username = "bimcl_calvo2017"; // "bimcl_calvo2017";
-	$password = "bimcalvo2017"; // "bimcalvo2017";
-	$dbname = "bimcl_cc"; //"bimcl_calvo_mackenna";
+	$username = "root"; // "bimcl_calvo2017";
+	$password = ""; // "bimcalvo2017";
+	$dbname = "hospital"; //"bimcl_calvo_mackenna";
 	$error = "Error de Conexion";
 
 	if(isset($_GET["id"])){

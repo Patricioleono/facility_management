@@ -20,75 +20,43 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                      $dataFichaMasiva->getCell("A1")->getValue() => $dataFichaMasiva->getCell("A$row")->getValue()
                     ,$dataFichaMasiva->getCell("B1")->getValue() => $dataFichaMasiva->getCell("B$row")->getValue()
                     ,$dataFichaMasiva->getCell("C1")->getValue() => $dataFichaMasiva->getCell("C$row")->getValue()
-                    ,$dataFichaMasiva->getCell("D1")->getValue() => $dataFichaMasiva->getCell("D$row")->getValue()
+                    ,$dataFichaMasiva->getCell("D1")->getValue() => date( "Y-m-d", Date::excelToTimestamp($dataFichaMasiva->getCell("D$row")->getValue()))
                     ,$dataFichaMasiva->getCell("E1")->getValue() => $dataFichaMasiva->getCell("E$row")->getValue()
-                    ,$dataFichaMasiva->getCell("F1")->getValue() => date("Y-m-d", Date::excelToTimestamp($dataFichaMasiva->getCell("F$row")->getValue()))
-                    ,$dataFichaMasiva->getCell("G1")->getValue() => $dataFichaMasiva->getCell("G$row")->getValue()
-                ]
-
-            );
+                ] );
         }else{
             break;
         }
     }
-    echo '<pre>';
-   print_r($datosAinsertar);
-    echo '</pre>';
+    //echo '<pre>';
+   //print_r($datosAinsertar);
+  //  echo '</pre>';
 
-   /* foreach($datosAinsertar as $data) {
-        $idUnica = $data['Nombre Instalacion'];
-        $nombreInstalacion = $data['ID Instalacion'];
-        $sistema = $data['Sistema'];
-        $equipo = $data['Equipo'];
-        $marca = $data['Marca'];
-        $modelo = $data['Modelo'];
-        $codigo = $data['Codigo'];
-        $potencia = $data['Potencia'];
-        $unidadDePotencia = $data['Unidad de Potencia'];
-        $nombreFabricante = $data['Nombre Fabricante'];
-        $versionSoftware = $data['Version Software'];
-        $nombreProveedor = $data['Nombre Proveedor'];
-        $codigoProveedor = $data['Codigo Proveedor'];
-        $unidad = $data['Unidad'];
-        $area = $data['Area'];
-        $recinto = $data['Recinto'];
-        $piso = $data['Piso'];
-        $precioCompra = $data['Precio Compra'];
-        $fechaInstalacion = $data['Fecha Instalacion'];
-        $fechaCaducidad = $data['Fecha Caducidad'];
-        $responsableMantenimiento = $data['Responsable Mantenimiento'];
-        $estadoEquipo = strtoupper($data['Estado del Equipo']);
-        $acreditacion = $data['Acreditacion'];
-        $alto = $data['Alto'];
-        $largo = $data['Largo'];
-        $ancho = $data['Ancho'];
-        $distanciaAlPiso = $data['Distancia al Piso'];
-        $peso = $data['Peso'];
+    foreach($datosAinsertar as $data) {
+        $tag = $data['Tag'];
+        $descripcion = $data['Descripcion Operacion General'];
+        $temporalidad = strtolower($data['Temporalidad']);
+        $fecha = $data['Fecha Inicio Mantencion'];
+        $duracion = $data['Duracion Equipo'];
 
-        $sql = "INSERT INTO instalaciones(idunica, nombreinstalacion, sistema
-                                               , equipo, marca, modelo
-                                               , codigo, potencia, unidadpotencia
-                                               , nombrefabricante, versionsoftware, nombreproveedor
-                                               , codigoproveedor, unidad, area
-                                               , recinto, piso, preciocompra
-                                               , fechainstalacion, fechacaducidadgarantia, responsablemantenimiento
-                                               , estadoequipo, acreditacion, alto
-                                               , largo, ancho, distanciaalpiso
-                                               , peso)
-                                        VALUES('$idUnica', '$nombreInstalacion', '$sistema'
-                                               , '$equipo', '$marca', '$modelo', '$codigo'
-                                               , '$potencia', '$unidadDePotencia', '$nombreFabricante'
-                                               , '$versionSoftware', '$nombreProveedor', '$codigoProveedor'
-                                               , $unidad, '$area', '$recinto', '$piso'
-                                               , '$precioCompra', '$fechaInstalacion', '$fechaCaducidad'
-                                               , '$responsableMantenimiento', '$estadoEquipo', '$acreditacion'
-                                               , '$alto', '$largo', '$ancho'
-                                               , '$distanciaAlPiso', '$peso')";
-        $result = $con->query($sql);
+        if($temporalidad == 'anual'){
+            $arrayFecha = explode("-", $fecha);
+            $newFecha = '';
+            for($i = 0; $i <= $duracion; $i++) {
+                $newFecha = $arrayFecha[0] + $i;
+                $juntarArray = implode('', $arrayFecha);
+                $fechaSinAnio = substr($juntarArray, 4, 4);
+                $fechaFinal = new DateTime($newFecha.$fechaSinAnio);
+                $fechaCompuesta = $fechaFinal->format('Y-m-d');
+                $fechaSubidaExcel = date('Y-m-d');
 
-    } */
+             //   $sql ="INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad) VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad')";
+              // $result = $con->query($sql);
+            }
+
+        }
+    }
     ?>
-   <?php //header( "refresh:1;url='cargaMasivaFicha.php'" ); ?>
+   <?php header( "refresh:3;url='../cargarArchivos.php'" ); ?>
 <html>
 	<head>
 
@@ -96,19 +64,19 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
 	</head>
 
 	<body>
-		<!-- center>
+		<center>
 			<?php
-				//if($result>0){
+				if($result){
 				?>
 
 				<h1>Se Ingresaron las fichas del excel</h1>
 
-				<?php //	}else{ ?>
+				<?php 	}else{ ?>
 
 				<h1>Error al ingresar fichas, revise documento</h1>
 
-			<?php //	} ?>
-			<p></p -->
+			<?php 	} ?>
+			<p></p>
 
 
 

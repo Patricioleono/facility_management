@@ -7,10 +7,13 @@ function ventanaSecundaria (URL){
    window.open(URL,"ventana1","width=400,height=250,scrollbars=NO,resizable=NO,directories=NO,location=NO") 
 } 
 </script>
+    <script type="text/javascript" src="../../node_modules/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+   <link rel="stylesheet" href="../../node_modules/vis-timeline/styles/vis-timeline-graph2d.min.css">
    <link rel="stylesheet" href="css/css_calendar.css">
    <link rel="stylesheet" href="css/fontello.css">
 <script >
-
     function goLastMonth(id,month,year){
       if(month== 1){
         --year;
@@ -47,10 +50,12 @@ function ventanaSecundaria (URL){
 
   <?php
     $idsss="SELECT idequipo FROM eventcalenderinstalaciones WHERE idequipo='$hola'";
+    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE temporalidad='anual' AND idequipo = '$hola'";
     $peticion = mysql_query ($idsss,$mysqli);
+    $result = mysql_query ($data,$mysqli);
     $row3 = mysql_fetch_array($peticion);
   ?>
-  <div id="divb">
+  <center id="divb">
     <div id="tabla1"> 
         <div id="cabtab1" align="center"> 
           Calendario ID Instalacion: <?php echo $row3['idequipo']; ?>
@@ -238,6 +243,74 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
         <button type="button" class="button2" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 10pt; FONT-FAMILY: Verdana;" value="Enviar" title="Ver" onclick="form.submit()">Ficha Instalacion</button>
     </form>
    </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+<?php
+echo '<pre>';
+$tituloFecha = Array();
+while($resultData = mysql_fetch_assoc($result)){
+    array_push($tituloFecha,
+        [ "fecha" =>$resultData['eventDate'],
+        "temporalidad" => $resultData['temporalidad'],
+        "title" => $resultData['Title'] ]);
+}
+//var_dump($tituloFecha);
+echo '</pre>';
+?>
+<center style="width: 100%">
+  <div id="visualization"></div>
+</center>
+      <script>
+          var data = '<?php echo json_encode($tituloFecha); ?>';
+          var parseData = JSON.parse(data);
+          var idEquipo = '<?php echo $row3['idequipo']; ?>';
+          var fechaStart = [];
+          var content = [];
+          var indice = 0;
+
+          for(var i = 0; i < parseData.length; i++){
+              indice = (indice + 1)
+              fechaStart.push({id: indice, fecha: parseData[i]['fecha'], content: parseData[i]['title']+" - "+
+                "<a href='../archivos.php?id=<?php echo $row3['idequipo']; ?>' >Folder</a>"})
+          }
+
+            const contenidoItem = fechaStart.map( x => {
+                return {id: x.id, content: x.content, start: x.fecha}
+            })
+          console.log(contenidoItem)
+
+
+          // Create an empty DataSet.
+          var items = new vis.DataSet([]);
+
+          // create a timeline
+          var container = document.getElementById('visualization');
+          var options = {
+              max: new Date(2040,1,1),
+              min: new Date(2023,1,1)
+          };
+          var timeline = new vis.Timeline(container, items, options);
+
+          function loadData () {
+              // get and deserialize the data
+              let dataItem = contenidoItem;
+
+              // update the data in the DataSet
+              //
+              // Note: when retrieving updated data from a server instead of a complete
+              // new set of data, one can simply update the existing data like:
+              //
+              //   items.update(data);
+              //
+              // Existing items will then be updated, and new items will be added.
+              items.clear();
+              items.update(dataItem);
+
+              // adjust the timeline window such that we see the loaded data
+              timeline.fit();
+          }
+
+    $(document).ready(function(){
+        loadData()
+    });
+      </script>
 </body>
 </html>
