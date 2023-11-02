@@ -2,9 +2,9 @@
 
  $mysqli=new mysqli(
      "localhost:3306"
-     ,"root"
-     ,""
-     ,"hospital");
+     ,"bimcl_calvo2017"
+     ,"bimcalvo2017"
+     ,"bimcl_cc");
     
 
 if(mysqli_connect_errno()){
