@@ -181,7 +181,7 @@
     <center>
         <tr>
             <td>
-                <form method="POST" action="../mod_instalacion/calendar/calendar2.php">
+                <form method="POST" action="../mod_instalacion/calendar/calendar.php">
                     <input type="hidden" name="id" value="<?php echo $row['id'] ;?>" />
                     <button type="button" class="BTN_TRANS" style="BORDER: rgb(128,128,128) 1px none; FONT-SIZE: 8pt; FONT-FAMILY: Verdana;" value="Enviar" title="Calendario" onclick="form.submit()"><img width="20px" height="20px" src="images/calendar.png"></button>
 

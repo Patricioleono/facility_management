@@ -40,17 +40,36 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
 
         if($temporalidad == 'anual'){
             $arrayFecha = explode("-", $fecha);
-            $newFecha = '';
+            $newFecha = $arrayFecha[0];
             for($i = 0; $i <= $duracion; $i++) {
-                $newFecha = $arrayFecha[0] + $i;
+                $newFecha = ($newFecha + 1);
                 $juntarArray = implode('', $arrayFecha);
                 $fechaSinAnio = substr($juntarArray, 4, 4);
                 $fechaFinal = new DateTime($newFecha.$fechaSinAnio);
                 $fechaCompuesta = $fechaFinal->format('Y-m-d');
                 $fechaSubidaExcel = date('Y-m-d');
 
-             //   $sql ="INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad) VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad')";
-              // $result = $con->query($sql);
+
+             $sql ="INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad) VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad')";
+             $result = $con->query($sql);
+            }
+
+        }elseif ($temporalidad == 'semestral'){
+            $arrayFecha = explode("-", $fecha);
+            $newMes = $arrayFecha[1];
+            $newYear = $arrayFecha[0];
+
+            for($i = 0; $i <= $duracion; $i++) {
+                $newMes = ($newMes + 6);
+                $fechaSubidaExcel = date('Y-m-d');
+
+                if ($newMes > 12) {
+                    $newMes = ($newMes - 12);
+                    $newYear = ($newYear + 1);
+                }
+                //$sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad)
+                  //      VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad')";
+                //$result = $con->query($sql);
             }
 
         }
