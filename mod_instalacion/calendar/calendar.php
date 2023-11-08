@@ -273,6 +273,8 @@ echo '</pre>';
           }
 
             const contenidoItem = fechaStart.map( x => {
+                let fechaNueva = x.fecha.split('-')
+                //console.log(fechaNueva)
                 return {id: x.id, content: x.content, start: x.fecha}
             })
           console.log(contenidoItem)
@@ -285,8 +287,9 @@ echo '</pre>';
           var container = document.getElementById('visualization');
           var options = {
               max: new Date(2040,1,1),
-              min: new Date(2023,1,1)
+              min: new Date(2022,1,1)
           };
+
           var timeline = new vis.Timeline(container, items, options);
 
           function loadData () {
@@ -302,7 +305,7 @@ echo '</pre>';
               //
               // Existing items will then be updated, and new items will be added.
               items.clear();
-              items.update(dataItem);
+              items.add(dataItem);
 
               // adjust the timeline window such that we see the loaded data
               timeline.fit();
