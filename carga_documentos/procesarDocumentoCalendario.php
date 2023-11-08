@@ -56,6 +56,7 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
 
         }elseif ($temporalidad == 'semestral'){
             $arrayFecha = explode("-", $fecha);
+            $newDia = $arrayFecha[2];
             $newMes = $arrayFecha[1];
             $newYear = $arrayFecha[0];
 
@@ -67,15 +68,19 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                     $newMes = ($newMes - 12);
                     $newYear = ($newYear + 1);
                 }
+                $fechaFinal = (count($newMes) < 2 ? '0'.$newMes : $newMes);
+                $fechaPartes = $newDia.'-'.$newMes.'-'.$newYear;
+                $fechaCompuesta = new DateTime($fechaPartes);
+                $fechaFormato = $fechaCompuesta->format('Y-m-d');
                 //$sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad)
-                  //      VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad')";
+                  //      VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad')";
                 //$result = $con->query($sql);
             }
 
         }
     }
     ?>
-   <?php header( "refresh:3;url='../cargarArchivos.php'" ); ?>
+   <?php //header( "refresh:3;url='../cargarArchivos.php'" ); ?>
 <html>
 	<head>
 
