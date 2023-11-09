@@ -274,11 +274,8 @@ echo '</pre>';
           }
 
             const contenidoItem = fechaStart.map( x => {
-                let fechaNueva = x.fecha.split('-')
-                //console.log(fechaNueva)
                 return {id: x.id, content: x.content, start: x.fecha}
             })
-          console.log(contenidoItem)
 
 
           // Create an empty DataSet.
