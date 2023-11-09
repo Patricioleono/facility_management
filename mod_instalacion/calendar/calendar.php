@@ -303,7 +303,7 @@ echo '</pre>';
               //
               // Existing items will then be updated, and new items will be added.
               items.clear();
-              items.add(dataItem);
+              items.update(dataItem);
 
               // adjust the timeline window such that we see the loaded data
               timeline.fit();
