@@ -110,7 +110,7 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
         }
     }
     ?>
-   <?php //header( "refresh:3;url='../cargarArchivos.php'" ); ?>
+   <?php header( "refresh:3;url='../cargaArchivos.php'" ); ?>
 <html>
 	<head>
 
