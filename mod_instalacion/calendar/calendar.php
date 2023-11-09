@@ -273,9 +273,13 @@ echo '</pre>';
                 "<a href='../archivos.php?id=<?php echo $row3['idequipo']; ?>' >Folder</a>"})
           }
 
+            const contenidoItem = fechaStart.map( x => {
+                return {id: x.id, content: x.content, start: x.fecha}
+            })
+
 
           // Create an empty DataSet.
-          var items = new vis.DataSet([]);
+          var items = new vis.DataSet([contenidoItem]);
 
           // create a timeline
           var container = document.getElementById('visualization');
@@ -286,11 +290,10 @@ echo '</pre>';
 
           var timeline = new vis.Timeline(container, items, options);
 
+          /*
           function loadData () {
               // get and deserialize the data
-              let dataItem = fechaStart.map( x => {
-                  return {id: x.id, content: x.content, start: x.fecha}
-              })
+              let dataItem = contenidoItem;
 
               // update the data in the DataSet
               //
@@ -306,9 +309,11 @@ echo '</pre>';
               // adjust the timeline window such that we see the loaded data
               timeline.fit();
           }
+          */
+
 
     $(document).ready(function(){
-        loadData()
+        //loadData()
     });
       </script>
 </body>
