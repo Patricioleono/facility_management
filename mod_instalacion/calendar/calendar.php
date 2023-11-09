@@ -52,7 +52,7 @@ function ventanaSecundaria (URL){
     $peticion = mysql_query ($idsss,$mysqli);
     $row3 = mysql_fetch_array($peticion);
     $idConsulta = $row3['idequipo'];
-    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta'";
+    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' AND temporalidad = 'anual' AND temporalidad = 'semestral'";
     $result = mysql_query ($data,$mysqli);
   ?>
   <center id="divb">
