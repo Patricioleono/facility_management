@@ -49,7 +49,7 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                 $fechaSubidaExcel = date('Y-m-d');
 
 
-             $sql ="INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad) VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad')";
+             $sql ="INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad, creacion) VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad', 1)";
              $result = $con->query($sql);
             }
 
@@ -79,7 +79,7 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                 $fechaFormato = $fechaCompuesta->format('Y-m-d');
 
 
-                $sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad) VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad')";
+                $sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad, creacion) VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad', 1)";
                 $result = $con->query($sql);
             }
 
@@ -104,7 +104,7 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                 $fechaFormato = $fechaCompuesta->format('Y-m-d');
 
 
-                $sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad) VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad')";
+                $sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad, creacion) VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad', 1)";
                 $result = $con->query($sql);
             }
         }
