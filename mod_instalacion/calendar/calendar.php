@@ -50,10 +50,11 @@ function ventanaSecundaria (URL){
 
   <?php
     $idsss="SELECT idequipo FROM eventcalenderinstalaciones WHERE idequipo='$hola'";
-    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones AND idequipo = '$hola'";
     $peticion = mysql_query ($idsss,$mysqli);
-    $result = mysql_query ($data,$mysqli);
     $row3 = mysql_fetch_array($peticion);
+    $idConsulta = $row3['idequipo'];
+    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta'";
+    $result = mysql_query ($data,$mysqli);
   ?>
   <center id="divb">
     <div id="tabla1"> 
@@ -244,16 +245,15 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
     </form>
    </div>
 <?php
+
 echo '<pre>';
 $tituloFecha = Array();
-var_dump($result);
 while($resultData = mysql_fetch_assoc($result)){
     array_push($tituloFecha,
         [ "fecha" =>$resultData['eventDate'],
         "temporalidad" => $resultData['temporalidad'],
         "title" => $resultData['Title'] ]);
 }
-//var_dump($tituloFecha);
 echo '</pre>';
 ?>
 <center style="width: 100%">
