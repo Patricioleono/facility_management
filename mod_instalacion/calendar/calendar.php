@@ -8,7 +8,6 @@ function ventanaSecundaria (URL){
 } 
 </script>
     <script type="text/javascript" src="../../node_modules/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
    <link rel="stylesheet" href="../../node_modules/vis-timeline/styles/vis-timeline-graph2d.min.css">
    <link rel="stylesheet" href="css/css_calendar.css">
@@ -217,14 +216,8 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
 </table>
    </div>
    </div>
-    
-<!--    <div id="tabla2"> 
-   <div id="cabtab2" align="center"> 
-   Notificaciones
-   </div> 
-   <div id="cuerpotab2"> 
-   Se aproximan mantenimientos pendientes para los dias:
-   <br>
+
+
    <?php 
   
     echo"$diaevento1 <br>";
@@ -233,11 +226,7 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
     echo"$diaevento4 <br>";
     echo"$diaevento5 <br>";
   ?>
-   </div>
-  <input type="button" style="width:100%;" value="Regresar" name="Regresar" onclick="history.back()" />
-   </div>
 
-</div> -->
 <div id="return">
 <form method="GET" action="../../fichas/ficha_equipos_instalaciones.php">
         <input type="hidden" name="id" value="<?php echo $row3['idequipo'] ;?>" />
@@ -259,6 +248,7 @@ echo '</pre>';
 <center style="width: 100%">
   <div id="visualization"></div>
 </center>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script>
           var data = '<?php echo json_encode($tituloFecha); ?>';
           var parseData = JSON.parse(data);
@@ -276,10 +266,11 @@ echo '</pre>';
             const contenidoItem = fechaStart.map( x => {
                 return {id: x.id, content: x.content, start: x.fecha}
             })
+          console.log(contenidoItem)
 
 
           // Create an empty DataSet.
-          var items = new vis.DataSet([contenidoItem]);
+          var items = new vis.DataSet([]);
 
           // create a timeline
           var container = document.getElementById('visualization');
@@ -290,7 +281,6 @@ echo '</pre>';
 
           var timeline = new vis.Timeline(container, items, options);
 
-          /*
           function loadData () {
               // get and deserialize the data
               let dataItem = contenidoItem;
@@ -309,11 +299,9 @@ echo '</pre>';
               // adjust the timeline window such that we see the loaded data
               timeline.fit();
           }
-          */
-
 
     $(document).ready(function(){
-        //loadData()
+        loadData()
     });
       </script>
 </body>
