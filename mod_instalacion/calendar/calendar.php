@@ -273,10 +273,6 @@ echo '</pre>';
                 "<a href='../archivos.php?id=<?php echo $row3['idequipo']; ?>' >Folder</a>"})
           }
 
-            const contenidoItem = fechaStart.map( x => {
-                return {id: x.id, content: x.content, start: x.fecha}
-            })
-
 
           // Create an empty DataSet.
           var items = new vis.DataSet([]);
@@ -292,7 +288,9 @@ echo '</pre>';
 
           function loadData () {
               // get and deserialize the data
-              let dataItem = contenidoItem;
+              let dataItem = fechaStart.map( x => {
+                  return {id: x.id, content: x.content, start: x.fecha}
+              })
 
               // update the data in the DataSet
               //
@@ -303,7 +301,7 @@ echo '</pre>';
               //
               // Existing items will then be updated, and new items will be added.
               items.clear();
-              items.update(dataItem);
+              items.add(dataItem);
 
               // adjust the timeline window such that we see the loaded data
               timeline.fit();
