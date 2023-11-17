@@ -52,8 +52,17 @@ function ventanaSecundaria (URL){
     $peticion = mysql_query ($idsss,$mysqli);
     $row3 = mysql_fetch_array($peticion);
     $idConsulta = $row3['idequipo'];
+
     $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' AND temporalidad IN('anual', 'semestral')";
     $result = mysql_query ($data,$mysqli);
+
+  $queryMax = "SELECT eventDate FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY ID DESC LIMIT 1";
+  $resultMax = mysql_query ($queryMax,$mysqli);
+  $max = mysql_fetch_array($resultMax);
+  $queryMin = "SELECT eventDate FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY ID ASC LIMIT 1";
+  $resultMin = mysql_query ($queryMin,$mysqli);
+  $min = mysql_fetch_array($resultMin);
+
   ?>
   <center id="divb">
     <div id="tabla1"> 
@@ -235,7 +244,6 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
    </div>
 <?php
 
-echo '<pre>';
 $tituloFecha = Array();
 while($resultData = mysql_fetch_assoc($result)){
     array_push($tituloFecha,
@@ -243,7 +251,7 @@ while($resultData = mysql_fetch_assoc($result)){
         "temporalidad" => $resultData['temporalidad'],
         "title" => $resultData['Title'] ]);
 }
-echo '</pre>';
+
 ?>
 <center style="width: 100%">
   <div id="visualization"></div>
@@ -251,14 +259,20 @@ echo '</pre>';
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script>
           var data = '<?php echo json_encode($tituloFecha); ?>';
+          var maxDate = '<?php echo json_encode($max['eventDate']); ?>';
+          var minDate = '<?php echo json_encode($min['eventDate']); ?>';
           var parseData = JSON.parse(data);
           var idEquipo = '<?php echo $row3['idequipo']; ?>';
           var fechaStart = [];
           var content = [];
           var indice = 0;
 
+          console.log(maxDate)
+          console.log(minDate)
+
           for(var i = 0; i < parseData.length; i++){
               indice = (indice + 1)
+
               fechaStart.push({id: indice, fecha: parseData[i]['fecha'], content: parseData[i]['title']+" - "+
                 "<a href='../archivos.php?id=<?php echo $row3['idequipo']; ?>' >Folder</a>"})
           }
@@ -275,8 +289,8 @@ echo '</pre>';
           // create a timeline
           var container = document.getElementById('visualization');
           var options = {
-              max: new Date(2040,1,1),
-              min: new Date(2022,1,1)
+              max: new Date(maxDate),
+              min: new Date(minDate)
           };
 
           var timeline = new vis.Timeline(container, items, options);
@@ -293,15 +307,15 @@ echo '</pre>';
               //   items.update(data);
               //
               // Existing items will then be updated, and new items will be added.
-              items.clear();
+              //items.clear();
               items.add(dataItem);
 
               // adjust the timeline window such that we see the loaded data
               timeline.fit();
           }
 
-    $(document).ready(function(){
-        loadData()
+    $(document).ready(function() {
+    loadData()
     });
       </script>
 </body>
