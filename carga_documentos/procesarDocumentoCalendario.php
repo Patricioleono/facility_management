@@ -27,10 +27,8 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
             break;
         }
     }
-    //echo '<pre>';
-   //print_r($datosAinsertar);
-  //  echo '</pre>';
 
+    $fechaAnualSegmetos;
     foreach($datosAinsertar as $data) {
         $tag = $data['Tag'];
         $descripcion = $data['Descripcion Operacion General'];
@@ -41,6 +39,7 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
         if($temporalidad == 'anual'){
             $arrayFecha = explode("-", $fecha);
             $newFecha = $arrayFecha[0];
+
             for($i = 0; $i <= $duracion; $i++) {
                 $newFecha = ($newFecha + 1);
                 $juntarArray = implode('', $arrayFecha);
@@ -50,9 +49,14 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                 $fechaSubidaExcel = date('Y-m-d');
 
 
-             $sql ="INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad) VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad')";
+             $sql ="INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad, creacion) VALUES('$tag', '$descripcion', '$descripcion', '$fechaCompuesta', '$fechaSubidaExcel', '$temporalidad', 1)";
              $result = $con->query($sql);
             }
+
+            $sql ="SELECT eventDate FROM eventcalenderinstalaciones WHERE temporalidad = 'anual' ORDER BY ID DESC LIMIT 1";
+            $queryFechaUnica = $con->query($sql);
+            $fechaFinalAnual = $queryFechaUnica->fetch_assoc();
+            $fechaAnualSegmetos = explode("-", $fechaFinalAnual['eventDate']);
 
         }elseif ($temporalidad == 'semestral'){
             $arrayFecha = explode("-", $fecha);
@@ -60,7 +64,7 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
             $newMes = $arrayFecha[1];
             $newYear = $arrayFecha[0];
 
-            for($i = 0; $i <= $duracion; $i++) {
+            for($i = 0; $newYear < $fechaAnualSegmetos[0]; $i++) {
                 $newMes = ($newMes + 6);
                 $fechaSubidaExcel = date('Y-m-d');
 
@@ -68,19 +72,45 @@ $highestRow = $dataFichaMasiva->getHighestDataRow();
                     $newMes = ($newMes - 12);
                     $newYear = ($newYear + 1);
                 }
+
                 $fechaFinal = (count($newMes) < 2 ? '0'.$newMes : $newMes);
                 $fechaPartes = $newDia.'-'.$newMes.'-'.$newYear;
                 $fechaCompuesta = new DateTime($fechaPartes);
                 $fechaFormato = $fechaCompuesta->format('Y-m-d');
-                //$sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad)
-                  //      VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad')";
-                //$result = $con->query($sql);
+
+
+                $sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad, creacion) VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad', 1)";
+                $result = $con->query($sql);
             }
 
+        }elseif ($temporalidad == 'trimestral'){
+            $arrayFecha = explode("-", $fecha);
+            $newDia = $arrayFecha[2];
+            $newMes = $arrayFecha[1];
+            $newYear = $arrayFecha[0];
+
+            for($i = 0; $newYear < $fechaAnualSegmetos[0]; $i++){
+                $newMes = ($newMes + 3);
+                $fechaSubidaExcel = date('Y-m-d');
+
+                if ($newMes > 12){
+                    $newMes = ($newMes - 12);
+                    $newYear = ($newYear + 1);
+                }
+
+                $fechaFinal = (count($newMes) < 2 ? '0'.$newMes: $newMes);
+                $fechaPartes = $newDia.'-'.$newMes.'-'.$newYear;
+                $fechaCompuesta = new DateTime($fechaPartes);
+                $fechaFormato = $fechaCompuesta->format('Y-m-d');
+
+
+                $sql = "INSERT INTO eventcalenderinstalaciones(idequipo, Title, Detail, eventDate, dateAdded, temporalidad, creacion) VALUES('$tag', '$descripcion', '$descripcion', '$fechaFormato', '$fechaSubidaExcel', '$temporalidad', 1)";
+                $result = $con->query($sql);
+            }
         }
     }
     ?>
-   <?php //header( "refresh:3;url='../cargarArchivos.php'" ); ?>
+   <?php header( "refresh:3;url='../cargaArchivos.php'" ); ?>
 <html>
 	<head>
 

@@ -8,7 +8,6 @@ function ventanaSecundaria (URL){
 } 
 </script>
     <script type="text/javascript" src="../../node_modules/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
    <link rel="stylesheet" href="../../node_modules/vis-timeline/styles/vis-timeline-graph2d.min.css">
    <link rel="stylesheet" href="css/css_calendar.css">
@@ -50,10 +49,21 @@ function ventanaSecundaria (URL){
 
   <?php
     $idsss="SELECT idequipo FROM eventcalenderinstalaciones WHERE idequipo='$hola'";
-    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE temporalidad='anual' AND idequipo = '$hola'";
     $peticion = mysql_query ($idsss,$mysqli);
-    $result = mysql_query ($data,$mysqli);
     $row3 = mysql_fetch_array($peticion);
+    $idConsulta = $row3['idequipo'];
+
+    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY eventDate ASC";
+    $result = mysql_query ($data,$mysqli);
+
+  $queryMax = "SELECT eventDate FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY ID DESC LIMIT 1";
+  $resultMax = mysql_query ($queryMax,$mysqli);
+  $max = mysql_fetch_array($resultMax);
+
+  $queryMin = "SELECT eventDate FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY ID ASC LIMIT 1";
+  $resultMin = mysql_query ($queryMin,$mysqli);
+  $min = mysql_fetch_array($resultMin);
+
   ?>
   <center id="divb">
     <div id="tabla1"> 
@@ -216,27 +226,9 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
 </table>
    </div>
    </div>
-    
-<!--    <div id="tabla2"> 
-   <div id="cabtab2" align="center"> 
-   Notificaciones
-   </div> 
-   <div id="cuerpotab2"> 
-   Se aproximan mantenimientos pendientes para los dias:
-   <br>
-   <?php 
-  
-    echo"$diaevento1 <br>";
-    echo"$diaevento2 <br>";
-    echo"$diaevento3 <br>";
-    echo"$diaevento4 <br>";
-    echo"$diaevento5 <br>";
-  ?>
-   </div>
-  <input type="button" style="width:100%;" value="Regresar" name="Regresar" onclick="history.back()" />
-   </div>
 
-</div> -->
+  
+
 <div id="return">
 <form method="GET" action="../../fichas/ficha_equipos_instalaciones.php">
         <input type="hidden" name="id" value="<?php echo $row3['idequipo'] ;?>" />
@@ -244,22 +236,24 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
     </form>
    </div>
 <?php
-echo '<pre>';
+
 $tituloFecha = Array();
 while($resultData = mysql_fetch_assoc($result)){
-    array_push($tituloFecha,
+     array_push($tituloFecha,
         [ "fecha" =>$resultData['eventDate'],
         "temporalidad" => $resultData['temporalidad'],
         "title" => $resultData['Title'] ]);
 }
-//var_dump($tituloFecha);
-echo '</pre>';
+
 ?>
 <center style="width: 100%">
   <div id="visualization"></div>
 </center>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script>
           var data = '<?php echo json_encode($tituloFecha); ?>';
+          var maxDate = '<?php echo json_encode($max['eventDate']); ?>';
+          var minDate = '<?php echo json_encode($min['eventDate']); ?>';
           var parseData = JSON.parse(data);
           var idEquipo = '<?php echo $row3['idequipo']; ?>';
           var fechaStart = [];
@@ -268,17 +262,16 @@ echo '</pre>';
 
           for(var i = 0; i < parseData.length; i++){
               indice = (indice + 1)
-              fechaStart.push({id: indice, fecha: parseData[i]['fecha'], content: parseData[i]['title']+" - "+
+
+              fechaStart.push({id: indice, 
+                fecha: parseData[i]['fecha'], 
+                content: parseData[i]['title']+" - "+
                 "<a href='../archivos.php?id=<?php echo $row3['idequipo']; ?>' >Folder</a>"})
           }
-
+    
             const contenidoItem = fechaStart.map( x => {
-                let fechaNueva = x.fecha.split('-')
-                //console.log(fechaNueva)
                 return {id: x.id, content: x.content, start: x.fecha}
             })
-          console.log(contenidoItem)
-
 
           // Create an empty DataSet.
           var items = new vis.DataSet([]);
@@ -286,15 +279,16 @@ echo '</pre>';
           // create a timeline
           var container = document.getElementById('visualization');
           var options = {
-              max: new Date(2040,1,1),
-              min: new Date(2022,1,1)
+           
           };
+          console.log(options)
 
           var timeline = new vis.Timeline(container, items, options);
 
           function loadData () {
               // get and deserialize the data
               let dataItem = contenidoItem;
+
 
               // update the data in the DataSet
               //
@@ -304,15 +298,15 @@ echo '</pre>';
               //   items.update(data);
               //
               // Existing items will then be updated, and new items will be added.
-              items.clear();
+              //items.clear();
               items.add(dataItem);
 
               // adjust the timeline window such that we see the loaded data
               timeline.fit();
           }
 
-    $(document).ready(function(){
-        loadData()
+    $(document).ready(function() {
+    loadData()
     });
       </script>
 </body>
