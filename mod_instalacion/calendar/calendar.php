@@ -53,12 +53,13 @@ function ventanaSecundaria (URL){
     $row3 = mysql_fetch_array($peticion);
     $idConsulta = $row3['idequipo'];
 
-    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' AND temporalidad IN('anual', 'semestral')";
+    $data="SELECT Title, eventDate, idequipo, temporalidad FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY eventDate ASC";
     $result = mysql_query ($data,$mysqli);
 
   $queryMax = "SELECT eventDate FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY ID DESC LIMIT 1";
   $resultMax = mysql_query ($queryMax,$mysqli);
   $max = mysql_fetch_array($resultMax);
+
   $queryMin = "SELECT eventDate FROM eventcalenderinstalaciones WHERE idequipo = '$idConsulta' ORDER BY ID ASC LIMIT 1";
   $resultMin = mysql_query ($queryMin,$mysqli);
   $min = mysql_fetch_array($resultMin);
@@ -226,15 +227,7 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
    </div>
    </div>
 
-
-   <?php 
   
-    echo"$diaevento1 <br>";
-    echo"$diaevento2 <br>";
-    echo"$diaevento3 <br>";
-    echo"$diaevento4 <br>";
-    echo"$diaevento5 <br>";
-  ?>
 
 <div id="return">
 <form method="GET" action="../../fichas/ficha_equipos_instalaciones.php">
@@ -246,7 +239,7 @@ alert('Hay un mantenimiento pendiente para el dia de hoy ".$todaysDate."!');
 
 $tituloFecha = Array();
 while($resultData = mysql_fetch_assoc($result)){
-    array_push($tituloFecha,
+     array_push($tituloFecha,
         [ "fecha" =>$resultData['eventDate'],
         "temporalidad" => $resultData['temporalidad'],
         "title" => $resultData['Title'] ]);
@@ -267,21 +260,18 @@ while($resultData = mysql_fetch_assoc($result)){
           var content = [];
           var indice = 0;
 
-          console.log(maxDate)
-          console.log(minDate)
-
           for(var i = 0; i < parseData.length; i++){
               indice = (indice + 1)
 
-              fechaStart.push({id: indice, fecha: parseData[i]['fecha'], content: parseData[i]['title']+" - "+
+              fechaStart.push({id: indice, 
+                fecha: parseData[i]['fecha'], 
+                content: parseData[i]['title']+" - "+
                 "<a href='../archivos.php?id=<?php echo $row3['idequipo']; ?>' >Folder</a>"})
           }
-
+    
             const contenidoItem = fechaStart.map( x => {
                 return {id: x.id, content: x.content, start: x.fecha}
             })
-          console.log(contenidoItem)
-
 
           // Create an empty DataSet.
           var items = new vis.DataSet([]);
@@ -289,15 +279,16 @@ while($resultData = mysql_fetch_assoc($result)){
           // create a timeline
           var container = document.getElementById('visualization');
           var options = {
-              max: new Date(maxDate),
-              min: new Date(minDate)
+           
           };
+          console.log(options)
 
           var timeline = new vis.Timeline(container, items, options);
 
           function loadData () {
               // get and deserialize the data
               let dataItem = contenidoItem;
+
 
               // update the data in the DataSet
               //
