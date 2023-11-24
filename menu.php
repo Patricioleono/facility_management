@@ -4,7 +4,7 @@ $enlace = mysql_connect("localhost:3306","root","");
 mysql_select_db("hospital", $enlace);
 */
 $enlace = mysql_connect("localhost:3306","bimcl_calvo2017","bimcalvo2017");
-mysql_select_db("bimcl_cc", $enlace);
+mysql_select_db("bimcl_chchbim", $enlace);
 
 $result = mysql_query("
 SELECT X.cantidadEventos1, X.cantidadEventos2, X.cantidadEventos3, X.cantidadEventos4, X.cantidadEventos5,
