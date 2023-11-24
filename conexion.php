@@ -4,7 +4,7 @@
      "localhost:3306"
      ,"bimcl_calvo2017"
      ,"bimcalvo2017"
-     ,"bimcl_cc");
+     ,"bimcl_chchbim");
     
 
 if(mysqli_connect_errno()){

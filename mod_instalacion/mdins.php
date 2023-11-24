@@ -164,7 +164,7 @@ $(document).ready(function() {
 
  </tbody>
 </table>
-<?php if ($tipousuario=='1'){?>
+<?php if ($tipousuario == '1' || $tipousuario == '5'){?>
   
 <form action="nuevo.php">
 
